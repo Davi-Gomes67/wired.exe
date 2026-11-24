@@ -1,0 +1,758 @@
+[
+  {
+    "folder": "COMPONENTS",
+    "categorySlug": "components",
+    "originalRelative": "COMPONENTS/Display LCD 16x2.webp",
+    "name": "Display LCD 16x2",
+    "slug": "display-lcd-16x2",
+    "imageUrl": "/produtos/catalog/components/display-lcd-16x2.webp",
+    "fileName": "display-lcd-16x2.webp"
+  },
+  {
+    "folder": "COMPONENTS",
+    "categorySlug": "components",
+    "originalRelative": "COMPONENTS/Jumpers Macho-Fêmea.jfif",
+    "name": "Jumpers Macho-Fêmea",
+    "slug": "jumpers-macho-femea",
+    "imageUrl": "/produtos/catalog/components/jumpers-macho-femea.jpg",
+    "fileName": "jumpers-macho-femea.jpg"
+  },
+  {
+    "folder": "COMPONENTS",
+    "categorySlug": "components",
+    "originalRelative": "COMPONENTS/Jumpers Macho-Macho.jfif",
+    "name": "Jumpers Macho-Macho",
+    "slug": "jumpers-macho-macho",
+    "imageUrl": "/produtos/catalog/components/jumpers-macho-macho.jpg",
+    "fileName": "jumpers-macho-macho.jpg"
+  },
+  {
+    "folder": "COMPONENTS",
+    "categorySlug": "components",
+    "originalRelative": "COMPONENTS/Kit de Capacitores.jpg",
+    "name": "Kit de Capacitores",
+    "slug": "kit-de-capacitores",
+    "imageUrl": "/produtos/catalog/components/kit-de-capacitores.jpg",
+    "fileName": "kit-de-capacitores.jpg"
+  },
+  {
+    "folder": "COMPONENTS",
+    "categorySlug": "components",
+    "originalRelative": "COMPONENTS/Kit de Resistores.webp",
+    "name": "Kit de Resistores",
+    "slug": "kit-de-resistores",
+    "imageUrl": "/produtos/catalog/components/kit-de-resistores.webp",
+    "fileName": "kit-de-resistores.webp"
+  },
+  {
+    "folder": "COMPONENTS",
+    "categorySlug": "components",
+    "originalRelative": "COMPONENTS/Kit Módulo RFID RC522.jpg",
+    "name": "Kit Módulo RFID RC522",
+    "slug": "kit-modulo-rfid-rc522",
+    "imageUrl": "/produtos/catalog/components/kit-modulo-rfid-rc522.jpg",
+    "fileName": "kit-modulo-rfid-rc522.jpg"
+  },
+  {
+    "folder": "COMPONENTS",
+    "categorySlug": "components",
+    "originalRelative": "COMPONENTS/Módulo Relé 5V.webp",
+    "name": "Módulo Relé 5V",
+    "slug": "modulo-rele-5v",
+    "imageUrl": "/produtos/catalog/components/modulo-rele-5v.webp",
+    "fileName": "modulo-rele-5v.webp"
+  },
+  {
+    "folder": "COMPONENTS",
+    "categorySlug": "components",
+    "originalRelative": "COMPONENTS/Protoboard 1660 pontos.jfif",
+    "name": "Protoboard 1660 pontos",
+    "slug": "protoboard-1660-pontos",
+    "imageUrl": "/produtos/catalog/components/protoboard-1660-pontos.jpg",
+    "fileName": "protoboard-1660-pontos.jpg"
+  },
+  {
+    "folder": "COMPONENTS",
+    "categorySlug": "components",
+    "originalRelative": "COMPONENTS/Protoboard 830 pontos.webp",
+    "name": "Protoboard 830 pontos",
+    "slug": "protoboard-830-pontos",
+    "imageUrl": "/produtos/catalog/components/protoboard-830-pontos.webp",
+    "fileName": "protoboard-830-pontos.webp"
+  },
+  {
+    "folder": "COMPONENTS",
+    "categorySlug": "components",
+    "originalRelative": "COMPONENTS/Sensor de Temperatura DS18B20.jfif",
+    "name": "Sensor de Temperatura DS18B20",
+    "slug": "sensor-de-temperatura-ds18b20",
+    "imageUrl": "/produtos/catalog/components/sensor-de-temperatura-ds18b20.jpg",
+    "fileName": "sensor-de-temperatura-ds18b20.jpg"
+  },
+  {
+    "folder": "COMPONENTS",
+    "categorySlug": "components",
+    "originalRelative": "COMPONENTS/Sensor DHT22.webp",
+    "name": "Sensor DHT22",
+    "slug": "sensor-dht22",
+    "imageUrl": "/produtos/catalog/components/sensor-dht22.webp",
+    "fileName": "sensor-dht22.webp"
+  },
+  {
+    "folder": "COMPONENTS",
+    "categorySlug": "components",
+    "originalRelative": "COMPONENTS/Sensor Ultrassônico HC-SR04.jfif",
+    "name": "Sensor Ultrassônico HC-SR04",
+    "slug": "sensor-ultrassonico-hc-sr04",
+    "imageUrl": "/produtos/catalog/components/sensor-ultrassonico-hc-sr04.jpg",
+    "fileName": "sensor-ultrassonico-hc-sr04.jpg"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/action figure Lain.jfif",
+    "name": "action figure Lain",
+    "slug": "action-figure-lain",
+    "imageUrl": "/produtos/catalog/digital-culture/action-figure-lain.jpg",
+    "fileName": "action-figure-lain.jpg"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/action figure mini lain.jfif",
+    "name": "action figure mini lain",
+    "slug": "action-figure-mini-lain",
+    "imageUrl": "/produtos/catalog/digital-culture/action-figure-mini-lain.jpg",
+    "fileName": "action-figure-mini-lain.jpg"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/action figure mini lain pijama.webp",
+    "name": "action figure mini lain pijama",
+    "slug": "action-figure-mini-lain-pijama",
+    "imageUrl": "/produtos/catalog/digital-culture/action-figure-mini-lain-pijama.webp",
+    "fileName": "action-figure-mini-lain-pijama.webp"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/Figure matrix.webp",
+    "name": "Figure matrix",
+    "slug": "figure-matrix",
+    "imageUrl": "/produtos/catalog/digital-culture/figure-matrix.webp",
+    "fileName": "figure-matrix.webp"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/fran bow figure.jfif",
+    "name": "fran bow figure",
+    "slug": "fran-bow-figure",
+    "imageUrl": "/produtos/catalog/digital-culture/fran-bow-figure.jpg",
+    "fileName": "fran-bow-figure.jpg"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/Funko cuphead.webp",
+    "name": "Funko cuphead",
+    "slug": "funko-cuphead",
+    "imageUrl": "/produtos/catalog/digital-culture/funko-cuphead.webp",
+    "fileName": "funko-cuphead.webp"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/Funko goku e kuririn.webp",
+    "name": "Funko goku e kuririn",
+    "slug": "funko-goku-e-kuririn",
+    "imageUrl": "/produtos/catalog/digital-culture/funko-goku-e-kuririn.webp",
+    "fileName": "funko-goku-e-kuririn.webp"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/Funko naruto.webp",
+    "name": "Funko naruto",
+    "slug": "funko-naruto",
+    "imageUrl": "/produtos/catalog/digital-culture/funko-naruto.webp",
+    "fileName": "funko-naruto.webp"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/kit figure sally face.jfif",
+    "name": "kit figure sally face",
+    "slug": "kit-figure-sally-face",
+    "imageUrl": "/produtos/catalog/digital-culture/kit-figure-sally-face.jpg",
+    "fileName": "kit-figure-sally-face.jpg"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/Kit funko harry potter.jfif",
+    "name": "Kit funko harry potter",
+    "slug": "kit-funko-harry-potter",
+    "imageUrl": "/produtos/catalog/digital-culture/kit-funko-harry-potter.jpg",
+    "fileName": "kit-funko-harry-potter.jpg"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/kit mini figure jojo 2.jfif",
+    "name": "kit mini figure jojo 2",
+    "slug": "kit-mini-figure-jojo-2",
+    "imageUrl": "/produtos/catalog/digital-culture/kit-mini-figure-jojo-2.jpg",
+    "fileName": "kit-mini-figure-jojo-2.jpg"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/kit mini figures jojo.jfif",
+    "name": "kit mini figures jojo",
+    "slug": "kit-mini-figures-jojo",
+    "imageUrl": "/produtos/catalog/digital-culture/kit-mini-figures-jojo.jpg",
+    "fileName": "kit-mini-figures-jojo.jpg"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/kit omori figures.jfif",
+    "name": "kit omori figures",
+    "slug": "kit-omori-figures",
+    "imageUrl": "/produtos/catalog/digital-culture/kit-omori-figures.jpg",
+    "fileName": "kit-omori-figures.jpg"
+  },
+  {
+    "folder": "CULTURE DIGITAL",
+    "categorySlug": "digital-culture",
+    "originalRelative": "CULTURE DIGITAL/suporte headset.jfif",
+    "name": "suporte headset",
+    "slug": "suporte-headset",
+    "imageUrl": "/produtos/catalog/digital-culture/suporte-headset.jpg",
+    "fileName": "suporte-headset.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/arch camiseta.webp",
+    "name": "arch camiseta",
+    "slug": "arch-camiseta",
+    "imageUrl": "/produtos/catalog/geek-wear/arch-camiseta.webp",
+    "fileName": "arch-camiseta.webp"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/Boné do BMO.jpg",
+    "name": "Boné do BMO",
+    "slug": "bone-do-bmo",
+    "imageUrl": "/produtos/catalog/geek-wear/bone-do-bmo.jpg",
+    "fileName": "bone-do-bmo.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/Bone do jake.jfif",
+    "name": "Bone do jake",
+    "slug": "bone-do-jake",
+    "imageUrl": "/produtos/catalog/geek-wear/bone-do-jake.jpg",
+    "fileName": "bone-do-jake.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/camiseta cyberpunk.jfif",
+    "name": "camiseta cyberpunk",
+    "slug": "camiseta-cyberpunk",
+    "imageUrl": "/produtos/catalog/geek-wear/camiseta-cyberpunk.jpg",
+    "fileName": "camiseta-cyberpunk.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/camiseta win 95.jfif",
+    "name": "camiseta win 95",
+    "slug": "camiseta-win-95",
+    "imageUrl": "/produtos/catalog/geek-wear/camiseta-win-95.jpg",
+    "fileName": "camiseta-win-95.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/camiseta windows tela azul.webp",
+    "name": "camiseta windows tela azul",
+    "slug": "camiseta-windows-tela-azul",
+    "imageUrl": "/produtos/catalog/geek-wear/camiseta-windows-tela-azul.webp",
+    "fileName": "camiseta-windows-tela-azul.webp"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/F Windows.jfif",
+    "name": "F Windows",
+    "slug": "f-windows",
+    "imageUrl": "/produtos/catalog/geek-wear/f-windows.jpg",
+    "fileName": "f-windows.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/jaqueta playstation.jfif",
+    "name": "jaqueta playstation",
+    "slug": "jaqueta-playstation",
+    "imageUrl": "/produtos/catalog/geek-wear/jaqueta-playstation.jpg",
+    "fileName": "jaqueta-playstation.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/Jaqueta Xbox.jfif",
+    "name": "Jaqueta Xbox",
+    "slug": "jaqueta-xbox",
+    "imageUrl": "/produtos/catalog/geek-wear/jaqueta-xbox.jpg",
+    "fileName": "jaqueta-xbox.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/kit casal nerd pac man.jfif",
+    "name": "kit casal nerd pac man",
+    "slug": "kit-casal-nerd-pac-man",
+    "imageUrl": "/produtos/catalog/geek-wear/kit-casal-nerd-pac-man.jpg",
+    "fileName": "kit-casal-nerd-pac-man.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/KIT winrar + assinatura vitalicia para usuarios.jfif",
+    "name": "KIT winrar + assinatura vitalicia para usuarios",
+    "slug": "kit-winrar-assinatura-vitalicia-para-usuarios",
+    "imageUrl": "/produtos/catalog/geek-wear/kit-winrar-assinatura-vitalicia-para-usuarios.jpg",
+    "fileName": "kit-winrar-assinatura-vitalicia-para-usuarios.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/LAIN.jfif",
+    "name": "LAIN",
+    "slug": "lain",
+    "imageUrl": "/produtos/catalog/geek-wear/lain.jpg",
+    "fileName": "lain.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/pac man camiseta.jfif",
+    "name": "pac man camiseta",
+    "slug": "pac-man-camiseta",
+    "imageUrl": "/produtos/catalog/geek-wear/pac-man-camiseta.jpg",
+    "fileName": "pac-man-camiseta.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/pac man camiseta ghosts.webp",
+    "name": "pac man camiseta ghosts",
+    "slug": "pac-man-camiseta-ghosts",
+    "imageUrl": "/produtos/catalog/geek-wear/pac-man-camiseta-ghosts.webp",
+    "fileName": "pac-man-camiseta-ghosts.webp"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/pac man manga longa comprida.jpg",
+    "name": "pac man manga longa comprida",
+    "slug": "pac-man-manga-longa-comprida",
+    "imageUrl": "/produtos/catalog/geek-wear/pac-man-manga-longa-comprida.jpg",
+    "fileName": "pac-man-manga-longa-comprida.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/WINRAR camisa.jpg",
+    "name": "WINRAR camisa",
+    "slug": "winrar-camisa",
+    "imageUrl": "/produtos/catalog/geek-wear/winrar-camisa.jpg",
+    "fileName": "winrar-camisa.jpg"
+  },
+  {
+    "folder": "GEEK",
+    "categorySlug": "geek-wear",
+    "originalRelative": "GEEK/WINRAR moletom.jfif",
+    "name": "WINRAR moletom",
+    "slug": "winrar-moletom",
+    "imageUrl": "/produtos/catalog/geek-wear/winrar-moletom.jpg",
+    "fileName": "winrar-moletom.jpg"
+  },
+  {
+    "folder": "HARDWARE LAB",
+    "categorySlug": "hardware-lab",
+    "originalRelative": "HARDWARE LAB/Arduino Mega 2560 R3.jpg",
+    "name": "Arduino Mega 2560 R3",
+    "slug": "arduino-mega-2560-r3",
+    "imageUrl": "/produtos/catalog/hardware-lab/arduino-mega-2560-r3.jpg",
+    "fileName": "arduino-mega-2560-r3.jpg"
+  },
+  {
+    "folder": "HARDWARE LAB",
+    "categorySlug": "hardware-lab",
+    "originalRelative": "HARDWARE LAB/Arduino Nano V3.jpg",
+    "name": "Arduino Nano V3",
+    "slug": "arduino-nano-v3",
+    "imageUrl": "/produtos/catalog/hardware-lab/arduino-nano-v3.jpg",
+    "fileName": "arduino-nano-v3.jpg"
+  },
+  {
+    "folder": "HARDWARE LAB",
+    "categorySlug": "hardware-lab",
+    "originalRelative": "HARDWARE LAB/Arduino Uno R3.jfif",
+    "name": "Arduino Uno R3",
+    "slug": "arduino-uno-r3",
+    "imageUrl": "/produtos/catalog/hardware-lab/arduino-uno-r3.jpg",
+    "fileName": "arduino-uno-r3.jpg"
+  },
+  {
+    "folder": "HARDWARE LAB",
+    "categorySlug": "hardware-lab",
+    "originalRelative": "HARDWARE LAB/ESP32 DevKit V1.jpg",
+    "name": "ESP32 DevKit V1",
+    "slug": "esp32-devkit-v1",
+    "imageUrl": "/produtos/catalog/hardware-lab/esp32-devkit-v1.jpg",
+    "fileName": "esp32-devkit-v1.jpg"
+  },
+  {
+    "folder": "HARDWARE LAB",
+    "categorySlug": "hardware-lab",
+    "originalRelative": "HARDWARE LAB/ESP32-S3-BOX-3.jpg",
+    "name": "ESP32-S3-BOX-3",
+    "slug": "esp32-s3-box-3",
+    "imageUrl": "/produtos/catalog/hardware-lab/esp32-s3-box-3.jpg",
+    "fileName": "esp32-s3-box-3.jpg"
+  },
+  {
+    "folder": "HARDWARE LAB",
+    "categorySlug": "hardware-lab",
+    "originalRelative": "HARDWARE LAB/Raspberry Pi 5.jfif",
+    "name": "Raspberry Pi 5",
+    "slug": "raspberry-pi-5",
+    "imageUrl": "/produtos/catalog/hardware-lab/raspberry-pi-5.jpg",
+    "fileName": "raspberry-pi-5.jpg"
+  },
+  {
+    "folder": "HARDWARE LAB",
+    "categorySlug": "hardware-lab",
+    "originalRelative": "HARDWARE LAB/Raspberry Pi Pico.webp",
+    "name": "Raspberry Pi Pico",
+    "slug": "raspberry-pi-pico",
+    "imageUrl": "/produtos/catalog/hardware-lab/raspberry-pi-pico.webp",
+    "fileName": "raspberry-pi-pico.webp"
+  },
+  {
+    "folder": "HARDWARE LAB",
+    "categorySlug": "hardware-lab",
+    "originalRelative": "HARDWARE LAB/Raspberry Pi Zero 2 W.jfif",
+    "name": "Raspberry Pi Zero 2 W",
+    "slug": "raspberry-pi-zero-2-w",
+    "imageUrl": "/produtos/catalog/hardware-lab/raspberry-pi-zero-2-w.jpg",
+    "fileName": "raspberry-pi-zero-2-w.jpg"
+  },
+  {
+    "folder": "HARDWARE LAB",
+    "categorySlug": "hardware-lab",
+    "originalRelative": "HARDWARE LAB/Seeed Studio XIAO ESP32C3.png",
+    "name": "Seeed Studio XIAO ESP32C3",
+    "slug": "seeed-studio-xiao-esp32c3",
+    "imageUrl": "/produtos/catalog/hardware-lab/seeed-studio-xiao-esp32c3.png",
+    "fileName": "seeed-studio-xiao-esp32c3.png"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/controle switch.jfif",
+    "name": "controle switch",
+    "slug": "controle-switch",
+    "imageUrl": "/produtos/catalog/peripherals/controle-switch.jpg",
+    "fileName": "controle-switch.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/controle Xbox.jfif",
+    "name": "controle Xbox",
+    "slug": "controle-xbox",
+    "imageUrl": "/produtos/catalog/peripherals/controle-xbox.jpg",
+    "fileName": "controle-xbox.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/Corsair HS35 V2.jpg",
+    "name": "Corsair HS35 V2",
+    "slug": "corsair-hs35-v2",
+    "imageUrl": "/produtos/catalog/peripherals/corsair-hs35-v2.jpg",
+    "fileName": "corsair-hs35-v2.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/Havit H2002D.jpg",
+    "name": "Havit H2002D",
+    "slug": "havit-h2002d",
+    "imageUrl": "/produtos/catalog/peripherals/havit-h2002d.jpg",
+    "fileName": "havit-h2002d.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/HyperX Cloud III.jfif",
+    "name": "HyperX Cloud III",
+    "slug": "hyperx-cloud-iii",
+    "imageUrl": "/produtos/catalog/peripherals/hyperx-cloud-iii.jpg",
+    "fileName": "hyperx-cloud-iii.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/HyperX Cloud III preto.jpg",
+    "name": "HyperX Cloud III preto",
+    "slug": "hyperx-cloud-iii-preto",
+    "imageUrl": "/produtos/catalog/peripherals/hyperx-cloud-iii-preto.jpg",
+    "fileName": "hyperx-cloud-iii-preto.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/Kit Teclado E Mouse Gamer Mancer Krinius V2, Rainbow 6400dpi.jpg",
+    "name": "Kit Teclado E Mouse Gamer Mancer Krinius V2, Rainbow 6400dpi",
+    "slug": "kit-teclado-e-mouse-gamer-mancer-krinius-v2-rainbow-6400dpi",
+    "imageUrl": "/produtos/catalog/peripherals/kit-teclado-e-mouse-gamer-mancer-krinius-v2-rainbow-6400dpi.jpg",
+    "fileName": "kit-teclado-e-mouse-gamer-mancer-krinius-v2-rainbow-6400dpi.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/Logitech G Pro X 60.jfif",
+    "name": "Logitech G Pro X 60",
+    "slug": "logitech-g-pro-x-60",
+    "imageUrl": "/produtos/catalog/peripherals/logitech-g-pro-x-60.jpg",
+    "fileName": "logitech-g-pro-x-60.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/Logitech G Pro X 60 preto.avif",
+    "name": "Logitech G Pro X 60 preto",
+    "slug": "logitech-g-pro-x-60-preto",
+    "imageUrl": "/produtos/catalog/peripherals/logitech-g-pro-x-60-preto.avif",
+    "fileName": "logitech-g-pro-x-60-preto.avif"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/Logitech G305 LIGHTSPEED.jpg",
+    "name": "Logitech G305 LIGHTSPEED",
+    "slug": "logitech-g305-lightspeed",
+    "imageUrl": "/produtos/catalog/peripherals/logitech-g305-lightspeed.jpg",
+    "fileName": "logitech-g305-lightspeed.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/Mousepad Logitech G640.jpg",
+    "name": "Mousepad Logitech G640",
+    "slug": "mousepad-logitech-g640",
+    "imageUrl": "/produtos/catalog/peripherals/mousepad-logitech-g640.jpg",
+    "fileName": "mousepad-logitech-g640.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/ps5 controle.jpg",
+    "name": "ps5 controle",
+    "slug": "ps5-controle",
+    "imageUrl": "/produtos/catalog/peripherals/ps5-controle.jpg",
+    "fileName": "ps5-controle.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/Redragon Fidd RGB.jfif",
+    "name": "Redragon Fidd RGB",
+    "slug": "redragon-fidd-rgb",
+    "imageUrl": "/produtos/catalog/peripherals/redragon-fidd-rgb.jpg",
+    "fileName": "redragon-fidd-rgb.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/Redragon Lakshmi K606.jfif",
+    "name": "Redragon Lakshmi K606",
+    "slug": "redragon-lakshmi-k606",
+    "imageUrl": "/produtos/catalog/peripherals/redragon-lakshmi-k606.jpg",
+    "fileName": "redragon-lakshmi-k606.jpg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/Redragon Storm Elite.webp",
+    "name": "Redragon Storm Elite",
+    "slug": "redragon-storm-elite",
+    "imageUrl": "/produtos/catalog/peripherals/redragon-storm-elite.webp",
+    "fileName": "redragon-storm-elite.webp"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "generated/teclado-mecanico-wired-k87.svg",
+    "name": "Teclado Mecânico Wired K87",
+    "slug": "teclado-mecanico-wired-k87",
+    "imageUrl": "/produtos/catalog/peripherals/teclado-mecanico-wired-k87.svg",
+    "fileName": "teclado-mecanico-wired-k87.svg"
+  },
+  {
+    "folder": "PERIPHERALS",
+    "categorySlug": "peripherals",
+    "originalRelative": "PERIPHERALS/UGREEN USB-C Hub 6 em 1.jpg",
+    "name": "UGREEN USB-C Hub 6 em 1",
+    "slug": "ugreen-usb-c-hub-6-em-1",
+    "imageUrl": "/produtos/catalog/peripherals/ugreen-usb-c-hub-6-em-1.jpg",
+    "fileName": "ugreen-usb-c-hub-6-em-1.jpg"
+  },
+  {
+    "folder": "RETRO COMPUTING",
+    "categorySlug": "retro-computing",
+    "originalRelative": "RETRO COMPUTING/Anbernic RG34XX.webp",
+    "name": "Anbernic RG34XX",
+    "slug": "anbernic-rg34xx",
+    "imageUrl": "/produtos/catalog/retro-computing/anbernic-rg34xx.webp",
+    "fileName": "anbernic-rg34xx.webp"
+  },
+  {
+    "folder": "RETRO COMPUTING",
+    "categorySlug": "retro-computing",
+    "originalRelative": "RETRO COMPUTING/Anbernic RG35XX H.jfif",
+    "name": "Anbernic RG35XX H",
+    "slug": "anbernic-rg35xx-h",
+    "imageUrl": "/produtos/catalog/retro-computing/anbernic-rg35xx-h.jpg",
+    "fileName": "anbernic-rg35xx-h.jpg"
+  },
+  {
+    "folder": "RETRO COMPUTING",
+    "categorySlug": "retro-computing",
+    "originalRelative": "RETRO COMPUTING/Controle USB Super Nintendo.webp",
+    "name": "Controle USB Super Nintendo",
+    "slug": "controle-usb-super-nintendo",
+    "imageUrl": "/produtos/catalog/retro-computing/controle-usb-super-nintendo.webp",
+    "fileName": "controle-usb-super-nintendo.webp"
+  },
+  {
+    "folder": "RETRO COMPUTING",
+    "categorySlug": "retro-computing",
+    "originalRelative": "RETRO COMPUTING/Flipper Zero.jpg",
+    "name": "Flipper Zero",
+    "slug": "flipper-zero",
+    "imageUrl": "/produtos/catalog/retro-computing/flipper-zero.jpg",
+    "fileName": "flipper-zero.jpg"
+  },
+  {
+    "folder": "RETRO COMPUTING",
+    "categorySlug": "retro-computing",
+    "originalRelative": "RETRO COMPUTING/Playdate.jfif",
+    "name": "Playdate",
+    "slug": "playdate",
+    "imageUrl": "/produtos/catalog/retro-computing/playdate.jpg",
+    "fileName": "playdate.jpg"
+  },
+  {
+    "folder": "RETRO COMPUTING",
+    "categorySlug": "retro-computing",
+    "originalRelative": "RETRO COMPUTING/R36S Retro Handheld.jfif",
+    "name": "R36S Retro Handheld",
+    "slug": "r36s-retro-handheld",
+    "imageUrl": "/produtos/catalog/retro-computing/r36s-retro-handheld.jpg",
+    "fileName": "r36s-retro-handheld.jpg"
+  },
+  {
+    "folder": "RETRO COMPUTING",
+    "categorySlug": "retro-computing",
+    "originalRelative": "RETRO COMPUTING/Raspberry Pi 500+.jfif",
+    "name": "Raspberry Pi 500+",
+    "slug": "raspberry-pi-500",
+    "imageUrl": "/produtos/catalog/retro-computing/raspberry-pi-500.jpg",
+    "fileName": "raspberry-pi-500.jpg"
+  },
+  {
+    "folder": "RETRO COMPUTING",
+    "categorySlug": "retro-computing",
+    "originalRelative": "RETRO COMPUTING/TrimUI Smart Pro.jfif",
+    "name": "TrimUI Smart Pro",
+    "slug": "trimui-smart-pro",
+    "imageUrl": "/produtos/catalog/retro-computing/trimui-smart-pro.jpg",
+    "fileName": "trimui-smart-pro.jpg"
+  },
+  {
+    "folder": "STARTER PACKS",
+    "categorySlug": "starter-packs",
+    "originalRelative": "STARTER PACKS/Arduino Starter Kit.jfif",
+    "name": "Arduino Starter Kit",
+    "slug": "arduino-starter-kit",
+    "imageUrl": "/produtos/catalog/starter-packs/arduino-starter-kit.jpg",
+    "fileName": "arduino-starter-kit.jpg"
+  },
+  {
+    "folder": "STARTER PACKS",
+    "categorySlug": "starter-packs",
+    "originalRelative": "STARTER PACKS/ELEGOO UNO R3 Project Super Starter Kit.webp",
+    "name": "ELEGOO UNO R3 Project Super Starter Kit",
+    "slug": "elegoo-uno-r3-project-super-starter-kit",
+    "imageUrl": "/produtos/catalog/starter-packs/elegoo-uno-r3-project-super-starter-kit.webp",
+    "fileName": "elegoo-uno-r3-project-super-starter-kit.webp"
+  },
+  {
+    "folder": "STARTER PACKS",
+    "categorySlug": "starter-packs",
+    "originalRelative": "STARTER PACKS/ESP32 Starter Kit.webp",
+    "name": "ESP32 Starter Kit",
+    "slug": "esp32-starter-kit",
+    "imageUrl": "/produtos/catalog/starter-packs/esp32-starter-kit.webp",
+    "fileName": "esp32-starter-kit.webp"
+  },
+  {
+    "folder": "STARTER PACKS",
+    "categorySlug": "starter-packs",
+    "originalRelative": "STARTER PACKS/Kit de Protoboard e Adereços.webp",
+    "name": "Kit de Protoboard e Adereços",
+    "slug": "kit-de-protoboard-e-aderecos",
+    "imageUrl": "/produtos/catalog/starter-packs/kit-de-protoboard-e-aderecos.webp",
+    "fileName": "kit-de-protoboard-e-aderecos.webp"
+  },
+  {
+    "folder": "STARTER PACKS",
+    "categorySlug": "starter-packs",
+    "originalRelative": "STARTER PACKS/Kit de Soldagem.png",
+    "name": "Kit de Soldagem",
+    "slug": "kit-de-soldagem",
+    "imageUrl": "/produtos/catalog/starter-packs/kit-de-soldagem.png",
+    "fileName": "kit-de-soldagem.png"
+  },
+  {
+    "folder": "STARTER PACKS",
+    "categorySlug": "starter-packs",
+    "originalRelative": "STARTER PACKS/Raspberry Pi 5 Starter Kit.webp",
+    "name": "Raspberry Pi 5 Starter Kit",
+    "slug": "raspberry-pi-5-starter-kit",
+    "imageUrl": "/produtos/catalog/starter-packs/raspberry-pi-5-starter-kit.webp",
+    "fileName": "raspberry-pi-5-starter-kit.webp"
+  },
+  {
+    "folder": "STARTER PACKS",
+    "categorySlug": "starter-packs",
+    "originalRelative": "STARTER PACKS/Raspberry Pi Pico Starter Kit.jpg",
+    "name": "Raspberry Pi Pico Starter Kit",
+    "slug": "raspberry-pi-pico-starter-kit",
+    "imageUrl": "/produtos/catalog/starter-packs/raspberry-pi-pico-starter-kit.jpg",
+    "fileName": "raspberry-pi-pico-starter-kit.jpg"
+  }
+]

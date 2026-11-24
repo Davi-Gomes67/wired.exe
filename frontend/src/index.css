@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-void text-[#D7EBDD] antialiased font-sans; background-image: radial-gradient(ellipse 80% 40% at 50% -10%, rgba(57,255,112,0.07), transparent 55%); }
+  ::selection { @apply bg-electric/30 text-[#D7EBDD]; }
+  :focus-visible { @apply outline-none ring-2 ring-electric/60 ring-offset-2 ring-offset-void; }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8; }
+  .btn-primary { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-electric px-5 py-3 text-sm font-semibold text-void transition duration-200 hover:bg-electric-light hover:shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-light focus-visible:ring-offset-2 focus-visible:ring-offset-void disabled:cursor-not-allowed disabled:opacity-45 active:scale-[0.98]; }
+  .btn-ghost { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-line bg-panel/60 px-5 py-3 text-sm font-medium text-slate-200 transition duration-200 hover:border-electric/50 hover:bg-panelLight hover:text-[#D7EBDD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric/40 disabled:cursor-not-allowed disabled:opacity-45; }
+  .btn-subtle { @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted transition hover:bg-white/5 hover:text-[#D7EBDD]; }
+  .surface { @apply rounded-2xl border border-line bg-panel/75 backdrop-blur-sm; }
+  .surface-hover { @apply transition duration-300 hover:-translate-y-0.5 hover:border-electric/40 hover:shadow-glow; }
+  .input-field { @apply min-h-11 w-full rounded-xl border border-line bg-carbon/80 px-4 py-3 text-sm text-slate-100 placeholder:text-muted transition focus:border-electric/70 focus:outline-none focus:ring-2 focus:ring-electric/25; }
+  .chip { @apply inline-flex min-h-10 items-center justify-center whitespace-nowrap rounded-full border border-line bg-panel/70 px-4 text-sm text-slate-300 transition hover:border-electric/50 hover:text-[#D7EBDD]; }
+  .chip-active { @apply border-electric/70 bg-electric/15 text-[#D7EBDD] shadow-glow; }
+  .skeleton { @apply animate-pulse rounded-xl bg-panelLight; }
+  .eyebrow { @apply font-mono text-[11px] uppercase tracking-[0.24em] text-electric-light; }
+  .section-title { @apply font-display text-2xl font-bold tracking-tight text-[#D7EBDD] sm:text-3xl lg:text-[2rem]; }
+  .section-desc { @apply mt-2 max-w-2xl text-sm leading-relaxed text-muted sm:text-base; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
