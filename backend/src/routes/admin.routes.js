@@ -8,6 +8,7 @@ const router = Router();
 router.use(requireAuth, requireAdmin);
 
 router.get('/dashboard', admin.dashboard);
+router.get('/activities', admin.listActivities);
 
 router.get('/categories', admin.listCategories);
 router.post('/categories', validateCategoryBody, admin.createCategory);
@@ -30,5 +31,13 @@ router.patch('/orders/:id/status', validateOrderStatusBody, admin.updateOrderSta
 router.get('/customers', admin.listCustomers);
 router.get('/customers/:id', admin.getCustomer);
 router.patch('/customers/:id/status', validateCustomerStatusBody, admin.updateCustomerStatus);
+
+router.get('/featured', admin.getFeatured);
+router.put('/featured', admin.updateFeatured);
+
+router.get('/media', admin.listMedia);
+
+router.get('/settings', admin.getSettings);
+router.put('/settings', admin.updateSettings);
 
 module.exports = router;

@@ -31,6 +31,11 @@ test('admin routes exigem auth e role ADMIN', async () => {
   const adminToken = await login(adminEmail);
   const dash = await request(app).get('/api/admin/dashboard').set('Authorization', `Bearer ${adminToken}`).expect(200);
   assert.equal(typeof dash.body.data.kpis.totalRevenueCents, 'number');
+  assert.equal(typeof dash.body.data.kpis.totalCategories, 'number');
+  assert.equal(Array.isArray(dash.body.data.categoryDistribution), true);
+  assert.equal(Array.isArray(dash.body.data.recentActivities), true);
+  const act = await request(app).get('/api/admin/activities?limit=5').set('Authorization', `Bearer ${adminToken}`).expect(200);
+  assert.equal(Array.isArray(act.body.data), true);
 });
 
 test('admin CRUD categoria e estoque', async () => {

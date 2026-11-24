@@ -16,7 +16,7 @@ function AdminProductsPage() {
   const load = async () => {
     try {
       const [p, c] = await Promise.all([adminService.products.list({ pageSize: 50 }), adminService.categories.list()]);
-      setItems(p.data); setCategories(c.data);
+      setItems(p.items || []); setCategories(c.data || []);
     } catch (e) { setError(getErrorMessage(e)); }
   };
   useEffect(() => { load(); }, []);
@@ -98,12 +98,12 @@ function AdminProductsPage() {
                   <div className="flex flex-wrap gap-2 mb-2">{(p.images || []).map(img => (
                     <div key={img.id} className="relative group">
                       <img src={img.url} alt="" className="h-10 w-10 rounded object-cover border border-line" />
-                      <button type="button" onClick={async ()=>{await adminService.products.removeImage(img.id); load();}} className="absolute -top-1 -right-1 hidden group-hover:flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-[#D7EBDD]">×</button>
+                      <button type="button" onClick={async ()=>{ try { await adminService.products.removeImage(img.id); load(); } catch (e) { setError(getErrorMessage(e)); } }} className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-[#D7EBDD]">×</button>
                     </div>
                   ))}</div>
                   <label className="btn-subtle h-8 px-2 text-xs cursor-pointer inline-flex">
                     <ImagePlus size={13} /> {uploadingId===p.id?'Enviando...':'Upload'}
-                    <input type="file" accept="image/*" multiple className="hidden" onChange={(e)=>upload(p.id, e.target.files)} />
+                    <input type="file" accept="image/*" multiple className="hidden" onChange={(e)=>{ upload(p.id, e.target.files); e.target.value = ''; }} />
                   </label>
                 </td>
                 <td className="p-3"><div className="flex gap-2 justify-end"><button className="btn-subtle h-8 w-8 px-0" onClick={()=>edit(p)}><Pencil size={14}/></button><button className="btn-subtle h-8 w-8 px-0 text-red-300" onClick={()=>remove(p.id)}><Trash2 size={14}/></button></div></td>

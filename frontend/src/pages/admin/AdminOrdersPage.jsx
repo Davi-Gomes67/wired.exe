@@ -10,11 +10,15 @@ function AdminOrdersPage() {
   const [selected, setSelected] = useState(null);
   const [error, setError] = useState('');
 
-  const load = async () => { try { const r = await adminService.orders.list({ pageSize: 50 }); setItems(r.data); } catch (e) { setError(getErrorMessage(e)); } };
+  const load = async () => { try { const r = await adminService.orders.list({ pageSize: 50 }); setItems(r.items || []); } catch (e) { setError(getErrorMessage(e)); } };
   useEffect(() => { load(); }, []);
 
   const update = async (id, payload) => {
-    try { const r = await adminService.orders.updateStatus(id, payload); setItems(items.map(o => o.id===id ? r.data : o)); if (selected?.id===id) setSelected(r.data); }
+    try {
+      const r = await adminService.orders.updateStatus(id, payload);
+      setItems((prev) => prev.map(o => o.id===id ? r.data : o));
+      if (selected?.id===id) setSelected(r.data);
+    }
     catch (e) { setError(getErrorMessage(e)); }
   };
 

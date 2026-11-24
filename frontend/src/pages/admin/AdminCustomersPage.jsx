@@ -7,7 +7,7 @@ function AdminCustomersPage() {
   const [selected, setSelected] = useState(null);
   const [error, setError] = useState('');
 
-  const load = () => adminService.customers.list({ pageSize: 50 }).then(r => setItems(r.data)).catch(e => setError(getErrorMessage(e)));
+  const load = () => adminService.customers.list({ pageSize: 50 }).then(r => setItems(r.items || [])).catch(e => setError(getErrorMessage(e)));
   useEffect(() => { load(); }, []);
 
   const open = async (id) => { try { const r = await adminService.customers.get(id); setSelected(r.data); } catch (e) { setError(getErrorMessage(e)); } };

@@ -71,7 +71,10 @@ export const ordersService = {
 };
 
 export const adminService = {
-  dashboard: () => api.get('/admin/dashboard').then((r) => r.data),
+  dashboard: (params) => api.get('/admin/dashboard', { params }).then((r) => r.data),
+  activities: {
+    list: (params) => api.get('/admin/activities', { params }).then((r) => r.data),
+  },
   categories: {
     list: () => api.get('/admin/categories').then((r) => r.data),
     create: (payload) => api.post('/admin/categories', payload).then((r) => r.data),
@@ -101,6 +104,17 @@ export const adminService = {
     list: (params) => api.get('/admin/customers', { params }).then((r) => r.data),
     get: (id) => api.get(`/admin/customers/${id}`).then((r) => r.data),
     updateStatus: (id, active) => api.patch(`/admin/customers/${id}/status`, { active }).then((r) => r.data),
+  },
+  featured: {
+    get: () => api.get('/admin/featured').then((r) => r.data),
+    update: (productIds) => api.put('/admin/featured', { productIds }).then((r) => r.data),
+  },
+  media: {
+    list: () => api.get('/admin/media').then((r) => r.data),
+  },
+  settings: {
+    get: () => api.get('/admin/settings').then((r) => r.data),
+    update: (payload) => api.put('/admin/settings', payload).then((r) => r.data),
   },
 };
 

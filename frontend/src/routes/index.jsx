@@ -19,8 +19,11 @@ import ResetPasswordPage from '../pages/ResetPasswordPage';
 import AdminCategoriesPage from '../pages/admin/AdminCategoriesPage';
 import AdminCustomersPage from '../pages/admin/AdminCustomersPage';
 import AdminDashboardPage from '../pages/admin/AdminDashboardPage';
+import AdminFeaturedPage from '../pages/admin/AdminFeaturedPage';
+import AdminMediaPage from '../pages/admin/AdminMediaPage';
 import AdminOrdersPage from '../pages/admin/AdminOrdersPage';
 import AdminProductsPage from '../pages/admin/AdminProductsPage';
+import AdminSettingsPage from '../pages/admin/AdminSettingsPage';
 import AdminStockPage from '../pages/admin/AdminStockPage';
 
 function AppRoutes() {
@@ -46,9 +49,13 @@ function AppRoutes() {
         <Route index element={<AdminDashboardPage />} />
         <Route path="produtos" element={<AdminProductsPage />} />
         <Route path="categorias" element={<AdminCategoriesPage />} />
+        <Route path="destaques" element={<AdminFeaturedPage />} />
+        <Route path="midia" element={<AdminMediaPage />} />
         <Route path="estoque" element={<AdminStockPage />} />
         <Route path="pedidos" element={<AdminOrdersPage />} />
         <Route path="clientes" element={<AdminCustomersPage />} />
+        <Route path="configuracoes" element={<AdminSettingsPage />} />
+        <Route path="*" element={<AdminDashboardPage />} />
       </Route>
     </Routes>
   );

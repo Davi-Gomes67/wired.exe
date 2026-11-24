@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BarChart3, Boxes, LayoutDashboard, LogOut, Menu, Package, ShoppingBag, Tags, Users, X } from 'lucide-react';
+import { BarChart3, Boxes, Image, LayoutDashboard, LogOut, Menu, Package, Settings, ShoppingBag, Star, Tags, Users, X } from 'lucide-react';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
@@ -7,9 +7,12 @@ const nav = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard, end: true },
   { to: '/admin/produtos', label: 'Produtos', icon: Package },
   { to: '/admin/categorias', label: 'Categorias', icon: Tags },
+  { to: '/admin/destaques', label: 'Destaques', icon: Star },
+  { to: '/admin/midia', label: 'Mídia', icon: Image },
   { to: '/admin/estoque', label: 'Estoque', icon: Boxes },
   { to: '/admin/pedidos', label: 'Pedidos', icon: ShoppingBag },
   { to: '/admin/clientes', label: 'Clientes', icon: Users },
+  { to: '/admin/configuracoes', label: 'Configurações', icon: Settings },
 ];
 
 function AdminLayout() {
