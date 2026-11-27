@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { adminService, getErrorMessage } from '../../services/api';
 import { formatDate, formatPrice } from '../../utils/format';
 
@@ -32,9 +32,9 @@ function AdminOrdersPage() {
             <thead className="text-left text-muted border-b border-line"><tr><th className="p-3">Pedido</th><th className="p-3">Cliente</th><th className="p-3">Total</th><th className="p-3">Status</th><th className="p-3">Pagamento</th></tr></thead>
             <tbody>
               {items.map((o) => (
-                <tr key={o.id} className="border-b border-line/50 cursor-pointer hover:bg-white/5" onClick={()=>setSelected(o)}>
+                <tr key={o.id} className="border-b border-line/50 cursor-pointer hover:bg-black/5 dark:bg-white/5" onClick={()=>setSelected(o)}>
                   <td className="p-3"><div className="font-mono text-electric-light text-xs">{o.orderCode}</div><div className="text-xs text-muted">{formatDate(o.createdAt)}</div></td>
-                  <td className="p-3"><div className="text-[#D7EBDD]">{o.customerName}</div><div className="text-xs text-muted">{o.customerEmail}</div></td>
+                  <td className="p-3"><div className="text-base">{o.customerName}</div><div className="text-xs text-muted">{o.customerEmail}</div></td>
                   <td className="p-3">{formatPrice(o.totalCents)}</td>
                   <td className="p-3"><select className="input-field h-9 py-0" value={o.status} onClick={e=>e.stopPropagation()} onChange={e=>update(o.id,{status:e.target.value})}>{STATUS.map(s=><option key={s} value={s}>{s}</option>)}</select></td>
                   <td className="p-3"><select className="input-field h-9 py-0" value={o.paymentStatus} onClick={e=>e.stopPropagation()} onChange={e=>update(o.id,{paymentStatus:e.target.value})}>{PAY.map(s=><option key={s} value={s}>{s}</option>)}</select></td>
@@ -44,13 +44,13 @@ function AdminOrdersPage() {
           </table>
         </div>
         <aside className="surface p-5 h-fit">
-          <h2 className="font-semibold text-[#D7EBDD]">Detalhe</h2>
-          {!selected ? <p className="mt-3 text-sm text-muted">Selecione um pedido.</p> : (
+          <h2 className="font-semibold text-base">Detalhe</h2>
+          {!selected ?<p className="mt-3 text-sm text-muted">Selecione um pedido.</p> : (
             <div className="mt-3 space-y-3 text-sm">
-              <div><div className="text-muted text-xs">Código</div><div className="font-mono text-electric-light">{selected.orderCode}</div></div>
-              <div><div className="text-muted text-xs">Endereço</div><div>{selected.addressLine1}, {selected.district}, {selected.city}/{selected.state}</div></div>
+              <div><div className="text-muted text-xs">C?digo</div><div className="font-mono text-electric-light">{selected.orderCode}</div></div>
+              <div><div className="text-muted text-xs">Endere?o</div><div>{selected.addressLine1}, {selected.district}, {selected.city}/{selected.state}</div></div>
               <div><div className="text-muted text-xs">Itens</div>{selected.items.map(i => <div key={i.id} className="flex justify-between py-1 border-b border-line/40"><span>{i.quantity}x {i.nameSnapshot}</span><span>{formatPrice(i.unitPriceCents*i.quantity)}</span></div>)}</div>
-              <div className="flex justify-between font-medium text-[#D7EBDD]"><span>Total</span><span>{formatPrice(selected.totalCents)}</span></div>
+              <div className="flex justify-between font-medium text-base"><span>Total</span><span>{formatPrice(selected.totalCents)}</span></div>
             </div>
           )}
         </aside>
@@ -60,3 +60,4 @@ function AdminOrdersPage() {
 }
 
 export default AdminOrdersPage;
+

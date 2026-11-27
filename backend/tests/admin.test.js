@@ -1,4 +1,4 @@
-const assert = require('node:assert/strict');
+﻿const assert = require('node:assert/strict');
 const { after, before, test } = require('node:test');
 const request = require('supertest');
 const bcrypt = require('bcryptjs');
@@ -15,6 +15,7 @@ before(async () => {
 });
 
 after(async () => {
+  await prisma.rootAccessSubscription.deleteMany({ where: { email: { in: [adminEmail, customerEmail] } } });
   await prisma.user.deleteMany({ where: { email: { in: [adminEmail, customerEmail] } } });
   await prisma.$disconnect();
 });
@@ -76,3 +77,53 @@ test('admin gerencia pedidos e clientes', async () => {
   assert.equal(status.body.data.active, false);
   await request(app).patch(`/api/admin/customers/${customer.id}/status`).set('Authorization', `Bearer ${adminToken}`).send({ active: true }).expect(200);
 });
+
+test('ROOT ACCESS: config pública, consentimento e admin status', async () => {
+  const publicRes = await request(app).get('/api/root-access').expect(200);
+  assert.equal(typeof publicRes.body.data.enabled, 'boolean');
+  assert.equal(typeof publicRes.body.data.priceCents, 'number');
+
+  await request(app).post('/api/root-access/request').send({ acceptTerms: true, source: 'PAGE' }).expect(401);
+
+  const customerToken = await login(customerEmail);
+  await request(app).post('/api/root-access/request').set('Authorization', `Bearer ${customerToken}`).send({ acceptTerms: false, source: 'PAGE' }).expect(400);
+
+  const reqRes = await request(app).post('/api/root-access/request').set('Authorization', `Bearer ${customerToken}`).send({ acceptTerms: true, source: 'PAGE' }).expect(201);
+  assert.equal(reqRes.body.data.subscription.status, 'PENDING');
+  assert.equal(reqRes.body.data.alreadyExists, false);
+
+  const adminToken = await login(adminEmail);
+  const list = await request(app).get('/api/admin/root-access/subscriptions').set('Authorization', `Bearer ${adminToken}`).expect(200);
+  assert.ok(Array.isArray(list.body.data));
+  const sub = list.body.data.find((s) => s.email === customerEmail);
+  assert.ok(sub);
+
+  const updated = await request(app).patch(`/api/admin/root-access/subscriptions/${sub.id}/status`).set('Authorization', `Bearer ${adminToken}`).send({ status: 'ACTIVE' }).expect(200);
+  assert.equal(updated.body.data.status, 'ACTIVE');
+});
+
+test('WIRED JOURNAL: admin CRUD, draft/public visibility', async () => {
+  const adminToken = await login(adminEmail);
+  const ts = Date.now();
+  const payload = {
+    title: `Journal Test ${ts}`,
+    slug: `journal-test-${ts}`,
+    excerpt: 'Resumo de teste do WIRED Journal para validação automatizada.',
+    category: 'HARDWARE',
+    authorName: 'WIRED Test',
+    status: 'DRAFT',
+    featured: false,
+    content: [{ type: 'paragraph', text: 'Conteúdo de teste seguro.' }],
+  };
+  const created = await request(app).post('/api/admin/journal').set('Authorization', `Bearer ${adminToken}`).send(payload).expect(201);
+  assert.equal(created.body.data.status, 'DRAFT');
+  const slug = created.body.data.slug;
+  await request(app).get(`/api/journal/${slug}`).expect(404);
+  await request(app).patch(`/api/admin/journal/${created.body.data.id}/status`).set('Authorization', `Bearer ${adminToken}`).send({ status: 'PUBLISHED' }).expect(200);
+  const pub = await request(app).get(`/api/journal/${slug}`).expect(200);
+  assert.equal(pub.body.data.slug, slug);
+  const list = await request(app).get('/api/journal?category=HARDWARE').expect(200);
+  assert.ok(Array.isArray(list.body.items));
+  await request(app).delete(`/api/admin/journal/${created.body.data.id}`).set('Authorization', `Bearer ${adminToken}`).expect(204);
+});
+

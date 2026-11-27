@@ -43,6 +43,24 @@ const parsePrice = (value) => {
   return Math.round(parsed * 100);
 };
 
+const buildSearchWhere = (search) => {
+  const terms = String(search || '').trim().split(/\s+/).filter(Boolean).slice(0, 6);
+  if (!terms.length) return null;
+  return {
+    AND: terms.map((term) => ({
+      OR: [
+        { name: { contains: term } },
+        { description: { contains: term } },
+        { brand: { contains: term } },
+        { category: { name: { contains: term } } },
+        { category: { slug: { contains: term } } },
+        { specifications: { some: { label: { contains: term } } } },
+        { specifications: { some: { value: { contains: term } } } },
+      ],
+    })),
+  };
+};
+
 const listProducts = async (req, res) => {
   const page = readPositiveInt(req.query.page, 1, 100000);
   const pageSize = readPositiveInt(req.query.pageSize, 12, 48);
@@ -50,6 +68,7 @@ const listProducts = async (req, res) => {
   const category = typeof req.query.category === 'string' ? req.query.category.trim() : '';
   const search = typeof req.query.q === 'string' ? req.query.q.trim() : '';
   const brand = typeof req.query.brand === 'string' ? req.query.brand.trim() : '';
+  const availability = typeof req.query.availability === 'string' ? req.query.availability.trim() : '';
   const featured = req.query.featured === 'true';
   const offer = req.query.offer === 'true';
   const minPriceCents = parsePrice(req.query.minPrice);
@@ -59,18 +78,13 @@ const listProducts = async (req, res) => {
   if (category) and.push({ category: { slug: category } });
   if (featured) and.push({ featured: true });
   if (brand) and.push({ brand });
+  if (availability === 'in-stock') and.push({ stock: { gt: 0 } });
+  if (availability === 'out-of-stock') and.push({ stock: { lte: 0 } });
   if (offer) and.push({ compareAtCents: { not: null } });
   if (minPriceCents !== null) and.push({ priceCents: { gte: minPriceCents } });
   if (maxPriceCents !== null) and.push({ priceCents: { lte: maxPriceCents } });
-  if (search) {
-    and.push({
-      OR: [
-        { name: { contains: search } },
-        { description: { contains: search } },
-        { brand: { contains: search } },
-      ],
-    });
-  }
+  const searchWhere = buildSearchWhere(search);
+  if (searchWhere) and.push(searchWhere);
   const where = { AND: and };
 
   let items = await prisma.product.findMany({
@@ -93,7 +107,7 @@ const listProducts = async (req, res) => {
       pageSize,
       total,
       totalPages: Math.max(1, Math.ceil(total / pageSize)),
-      filters: { category, search, brand, sort, featured, offer, minPriceCents, maxPriceCents },
+      filters: { category, search, brand, availability, sort, featured, offer, minPriceCents, maxPriceCents },
     },
   });
 };
@@ -121,4 +135,18 @@ const listBrands = async (_req, res) => {
   res.json({ data: rows.map((row) => row.brand).filter(Boolean) });
 };
 
-module.exports = { listProducts, getProductBySlug, listBrands };
+const listSuggestions = async (req, res) => {
+  const q = typeof req.query.q === 'string' ? req.query.q.trim() : '';
+  const limit = readPositiveInt(req.query.limit, 6, 10);
+  if (q.length < 2) return res.json({ data: [] });
+  const searchWhere = buildSearchWhere(q);
+  const items = await prisma.product.findMany({
+    where: { AND: [{ archived: false }, searchWhere] },
+    select: { id: true, name: true, slug: true, brand: true, imageUrl: true, priceCents: true, stock: true, category: { select: { name: true, slug: true } } },
+    orderBy: [{ featured: 'desc' }, { createdAt: 'desc' }],
+    take: limit,
+  });
+  res.json({ data: items });
+};
+
+module.exports = { listProducts, getProductBySlug, listBrands, listSuggestions };

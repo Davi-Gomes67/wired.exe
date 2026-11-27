@@ -1,4 +1,4 @@
-import { Cpu, Gamepad2, Headphones, Keyboard, MemoryStick, Package, Shirt } from 'lucide-react';
+﻿import { Cpu, Gamepad2, Headphones, Keyboard, MemoryStick, Package, Shirt } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 export const DEPARTMENTS = [
@@ -24,8 +24,8 @@ export default function DepartmentNav() {
                 className={({ isActive }) =>
                   `inline-flex min-h-10 items-center gap-2 rounded-lg px-3 py-2 text-[11px] font-semibold tracking-[0.08em] transition ${
                     isActive
-                      ? 'bg-electric/15 text-[#D7EBDD] ring-1 ring-electric/40'
-                      : 'text-muted hover:bg-white/5 hover:text-slate-200'
+                      ?'bg-electric/15 text-base ring-1 ring-electric/40'
+                      : 'text-muted hover:bg-black/5 dark:bg-white/5 hover:text-sub'
                   }`
                 }
               >
@@ -39,3 +39,4 @@ export default function DepartmentNav() {
     </nav>
   );
 }
+

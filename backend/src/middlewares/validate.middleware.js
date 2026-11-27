@@ -1,4 +1,4 @@
-const { HttpError } = require('../utils/http-error');
+﻿const { HttpError } = require('../utils/http-error');
 const { normalizeEmail } = require('../utils/auth');
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -17,14 +17,14 @@ const readString = (value, field, min, max, { optional = false, pattern, pattern
     throw new HttpError(400, `O campo ${field} deve ter entre ${min} e ${max} caracteres.`);
   }
   if (pattern && !pattern.test(trimmed)) {
-    throw new HttpError(400, patternMessage || `O campo ${field} é inválido.`);
+    throw new HttpError(400, patternMessage || `O campo ${field} ? inv?lido.`);
   }
   return trimmed;
 };
 
 const readEmail = (value, field = 'email') => {
   const email = normalizeEmail(readString(value, field, 5, 180));
-  if (!EMAIL_PATTERN.test(email)) throw new HttpError(400, 'Informe um e-mail válido.');
+  if (!EMAIL_PATTERN.test(email)) throw new HttpError(400, 'Informe um e-mail v?lido.');
   return email;
 };
 
@@ -33,7 +33,7 @@ const readPassword = (value, field = 'password') => {
     throw new HttpError(400, `O campo ${field} deve ter entre ${PASSWORD_MIN} e 72 caracteres.`);
   }
   if (!/[A-Za-z]/.test(value) || !/[0-9]/.test(value)) {
-    throw new HttpError(400, `O campo ${field} deve conter letra e número.`);
+    throw new HttpError(400, `O campo ${field} deve conter letra e n?mero.`);
   }
   return value;
 };
@@ -42,7 +42,7 @@ const readPhone = (value, field = 'phone', optional = true) =>
   readString(value, field, 8, 20, {
     optional,
     pattern: PHONE_PATTERN,
-    patternMessage: 'Informe um telefone válido.',
+    patternMessage: 'Informe um telefone v?lido.',
   });
 
 const readAddress = (body, { partial = false } = {}) => {
@@ -59,7 +59,7 @@ const readAddress = (body, { partial = false } = {}) => {
   assign('recipientName', (v) => readString(v, 'recipientName', 2, 120));
   assign('phone', (v) => readPhone(v, 'phone', true));
   assign('postalCode', (v) => {
-    const raw = readString(v, 'postalCode', 8, 9, { pattern: POSTAL_PATTERN, patternMessage: 'Informe um CEP válido.' });
+    const raw = readString(v, 'postalCode', 8, 9, { pattern: POSTAL_PATTERN, patternMessage: 'Informe um CEP v?lido.' });
     return raw.replace(/\D/g, '');
   });
   assign('addressLine1', (v) => readString(v, 'addressLine1', 4, 160));
@@ -68,7 +68,7 @@ const readAddress = (body, { partial = false } = {}) => {
   assign('city', (v) => readString(v, 'city', 2, 100));
   assign('state', (v) => {
     const state = readString(v, 'state', 2, 2).toUpperCase();
-    if (!STATE_PATTERN.test(state)) throw new HttpError(400, 'Informe uma UF válida (ex.: SP).');
+    if (!STATE_PATTERN.test(state)) throw new HttpError(400, 'Informe uma UF v?lida (ex.: SP).');
     return state;
   });
   if (!partial || has('isDefault')) {
@@ -80,7 +80,7 @@ const readAddress = (body, { partial = false } = {}) => {
 
   if (!partial) {
     const required = ['recipientName', 'postalCode', 'addressLine1', 'district', 'city', 'state'];
-    for (const key of required) if (address[key] === undefined) throw new HttpError(400, `O campo ${key} é obrigatório.`);
+    for (const key of required) if (address[key] === undefined) throw new HttpError(400, `O campo ${key} ? obrigat?rio.`);
   }
   return address;
 };
@@ -93,10 +93,10 @@ const normalizeItems = (items) => {
   for (const item of items) {
     const productId = Number(item && item.productId);
     const quantity = Number(item && item.quantity);
-    if (!Number.isInteger(productId) || productId <= 0) throw new HttpError(400, 'Cada item deve informar um productId válido.');
+    if (!Number.isInteger(productId) || productId <= 0) throw new HttpError(400, 'Cada item deve informar um productId v?lido.');
     if (!Number.isInteger(quantity) || quantity < 1 || quantity > 99) throw new HttpError(400, 'A quantidade de cada item deve estar entre 1 e 99.');
     merged.set(productId, (merged.get(productId) || 0) + quantity);
-    if (merged.get(productId) > 99) throw new HttpError(400, 'A quantidade máxima por produto é 99.');
+    if (merged.get(productId) > 99) throw new HttpError(400, 'A quantidade m?xima por produto ? 99.');
   }
   return Array.from(merged, ([productId, quantity]) => ({ productId, quantity }));
 };
@@ -125,11 +125,22 @@ const validateLoginBody = (req, _res, next) => {
   } catch (error) { next(error); }
 };
 
+const USERNAME_PATTERN = /^[a-z0-9_.-]{3,24}$/;
+
+const readUsername = (value) => {
+  if (value === null || value === '') return null;
+  const username = readString(value, 'username', 3, 24).toLowerCase();
+  if (!USERNAME_PATTERN.test(username)) throw new HttpError(400, 'Username deve conter 3-24 caracteres: letras min?sculas, n?meros, ., _ ou -.');
+  return username;
+};
+
 const validateProfileBody = (req, _res, next) => {
   try {
     const body = req.body || {};
     const data = {};
     if (body.name !== undefined) data.name = readString(body.name, 'name', 2, 120);
+    if (body.displayName !== undefined) data.displayName = readString(body.displayName, 'displayName', 2, 60);
+    if (body.username !== undefined) data.username = readUsername(body.username);
     if (body.phone !== undefined) data.phone = readPhone(body.phone, 'phone', true);
     if (Object.keys(data).length === 0) throw new HttpError(400, 'Informe ao menos um campo para atualizar.');
     req.validatedProfile = data;
@@ -192,13 +203,13 @@ const validateOrderBody = (req, _res, next) => {
     const district = readString(body.district, 'district', 2, 100);
     const city = readString(body.city, 'city', 2, 100);
     const state = readString(body.state, 'state', 2, 2).toUpperCase();
-    if (!STATE_PATTERN.test(state)) throw new HttpError(400, 'Informe uma UF válida (ex.: SP).');
+    if (!STATE_PATTERN.test(state)) throw new HttpError(400, 'Informe uma UF v?lida (ex.: SP).');
     const postalCode = readString(body.postalCode, 'postalCode', 8, 9, {
       pattern: POSTAL_PATTERN,
-      patternMessage: 'Informe um CEP válido.',
+      patternMessage: 'Informe um CEP v?lido.',
     }).replace(/\D/g, '');
     const paymentMethod = readString(body.paymentMethod, 'paymentMethod', 3, 40).toUpperCase();
-    if (!PAYMENT_METHODS.has(paymentMethod)) throw new HttpError(400, 'Método de pagamento inválido.');
+    if (!PAYMENT_METHODS.has(paymentMethod)) throw new HttpError(400, 'M?todo de pagamento inv?lido.');
 
     req.validatedOrder = {
       customerPhone,
@@ -228,3 +239,4 @@ module.exports = {
   validateOrderBody,
   PAYMENT_METHODS,
 };
+

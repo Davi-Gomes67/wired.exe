@@ -4,12 +4,12 @@ const prisma = require('../src/config/prisma');
 
 const CATEGORIES = [
   { name: 'HARDWARE LAB', slug: 'hardware-lab', description: 'Placas, microcontroladores e ferramentas para montar, testar e evoluir projetos.' },
-  { name: 'COMPONENTS', slug: 'components', description: 'Pe�as essenciais, sensores e m�dulos para eletr�nica e prototipagem.' },
-  { name: 'PERIPHERALS', slug: 'peripherals', description: 'Teclados, mouses, �udio e acess�rios para sua esta��o.' },
-  { name: 'RETRO COMPUTING', slug: 'retro-computing', description: 'M�quinas, port�teis e rel�quias inspiradas na era cl�ssica da computa��o.' },
-  { name: 'GEEK WEAR', slug: 'geek-wear', description: 'Vestu�rio e acess�rios com identidade tech, geek e cultura digital.' },
-  { name: 'DIGITAL CULTURE', slug: 'digital-culture', description: 'Colecion�veis, figures e objetos da cultura digital e underground.' },
-  { name: 'STARTER PACKS', slug: 'starter-packs', description: 'Kits iniciais para come�ar r�pido em eletr�nica, maker e computa��o.' },
+  { name: 'COMPONENTS', slug: 'components', description: 'Pe?as essenciais, sensores e m?dulos para eletr?nica e prototipagem.' },
+  { name: 'PERIPHERALS', slug: 'peripherals', description: 'Teclados, mouses, ?udio e acess?rios para sua esta??o.' },
+  { name: 'RETRO COMPUTING', slug: 'retro-computing', description: 'M?quinas, port?teis e rel?quias inspiradas na era cl?ssica da computa?o.' },
+  { name: 'GEEK WEAR', slug: 'geek-wear', description: 'Vestu?rio e acess?rios com identidade tech, geek e cultura digital.' },
+  { name: 'DIGITAL CULTURE', slug: 'digital-culture', description: 'Colecion?veis, figures e objetos da cultura digital e underground.' },
+  { name: 'STARTER PACKS', slug: 'starter-packs', description: 'Kits iniciais para come?ar r?pido em eletr?nica, maker e computa?o.' },
 ];
 
 const KNOWN_BRANDS = ['Arduino','Raspberry Pi','ESP32','ESP32-S3-BOX-3','Seeed Studio','Logitech','Redragon','HyperX','Corsair','Havit','UGREEN','Anbernic','TrimUI','Playdate','Flipper Zero','Funko','ELEGOO'];
@@ -26,7 +26,7 @@ function inferBrand(name) {
 
 function descriptionFor(item) {
   const cat = CATEGORIES.find((c) => c.slug === item.categorySlug)?.name || item.categorySlug;
-  return `${item.name} — item do departamento ${cat} no catálogo WIRED.exe. Hardware for your projects. Culture for your identity.`;
+  return `${item.name} — item do departamento ${cat} no catálogo WIRED.exe. Hardware para seus projetos. Cultura para sua identidade.`;
 }
 
 function loadPricing() {
@@ -68,9 +68,9 @@ async function main() {
       slug: item.slug,
       description: descriptionFor(item),
       brand: inferBrand(item.name),
-      priceCents: p ? Number(p.priceCents || 0) : (existing?.priceCents ?? 0),
-      compareAtCents: p ? (p.compareAtCents == null ? null : Number(p.compareAtCents)) : (existing?.compareAtCents ?? null),
-      stock: p ? Number(p.stock ?? 0) : (existing?.stock ?? 0),
+      priceCents: p ?Number(p.priceCents || 0) : (existing?.priceCents ?? 0),
+      compareAtCents: p ?(p.compareAtCents == null ? null : Number(p.compareAtCents)) : (existing?.compareAtCents ?? null),
+      stock: p ?Number(p.stock ?? 0) : (existing?.stock ?? 0),
       imageUrl: item.imageUrl,
       featured: existing?.featured ?? false,
     };

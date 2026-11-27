@@ -1,4 +1,4 @@
-const { HttpError } = require('../utils/http-error');
+﻿const { HttpError } = require('../utils/http-error');
 const dashboard = require('../services/admin/dashboard.service');
 const categories = require('../services/admin/categories.service');
 const products = require('../services/admin/products.service');
@@ -8,6 +8,8 @@ const featured = require('../services/admin/featured.service');
 const media = require('../services/admin/media.service');
 const settings = require('../services/admin/settings.service');
 const activity = require('../services/admin/activity.service');
+const rootAccess = require('../services/root-access.service');
+const journal = require('../services/admin/journal.service');
 
 const wrap = (fn) => async (req, res, next) => { try { await fn(req, res, next); } catch (e) { next(e); } };
 const idParam = (req) => { const id = Number(req.params.id); if (!Number.isInteger(id) || id <= 0) throw new HttpError(400, 'ID inválido.'); return id; };
@@ -92,9 +94,44 @@ exports.updateFeatured = wrap(async (req, res) => {
 
 exports.listMedia = wrap(async (_req, res) => res.json({ data: await media.listMedia() }));
 
-exports.getSettings = wrap(async (_req, res) => res.json({ data: await settings.getSettings() }));
+exports.getSettings = wrap(async (_req, res) => res.json({ data: await settings.getRawSettings() }));
 exports.updateSettings = wrap(async (req, res) => {
   const data = await settings.updateSettings(req.body || {});
   await activity.logActivity({ action: 'UPDATE', entityType: 'SETTINGS', entityLabel: 'Configurações', actor: req.user });
+  res.json({ data });
+});
+
+exports.listRootAccessSubscriptions = wrap(async (_req, res) => res.json({ data: await rootAccess.listAdmin() }));
+exports.updateRootAccessStatus = wrap(async (req, res) => {
+  const data = await rootAccess.updateStatus(idParam(req), req.body?.status);
+  await activity.logActivity({ action: 'UPDATE_STATUS', entityType: 'ROOT_ACCESS', entityId: data.id, entityLabel: data.email, actor: req.user, metadata: { status: data.status } });
+  res.json({ data });
+});
+
+exports.listJournalArticles = wrap(async (req, res) => res.json(await journal.listArticles(req.query)));
+exports.getJournalArticle = wrap(async (req, res) => res.json({ data: await journal.getArticle(idParam(req)) }));
+exports.createJournalArticle = wrap(async (req, res) => {
+  const data = await journal.createArticle(req.validatedArticle);
+  await activity.logActivity({ action: 'CREATE', entityType: 'ARTICLE', entityId: data.id, entityLabel: data.title, actor: req.user, metadata: { status: data.status } });
+  res.status(201).json({ data });
+});
+exports.updateJournalArticle = wrap(async (req, res) => {
+  const data = await journal.updateArticle(idParam(req), req.validatedArticle);
+  await activity.logActivity({ action: 'UPDATE', entityType: 'ARTICLE', entityId: data.id, entityLabel: data.title, actor: req.user, metadata: { status: data.status } });
+  res.json({ data });
+});
+exports.deleteJournalArticle = wrap(async (req, res) => {
+  const id = idParam(req); await journal.deleteArticle(id);
+  await activity.logActivity({ action: 'DELETE', entityType: 'ARTICLE', entityId: id, actor: req.user });
+  res.status(204).send();
+});
+exports.updateJournalArticleStatus = wrap(async (req, res) => {
+  const data = await journal.setStatus(idParam(req), req.validatedArticleStatus.status);
+  await activity.logActivity({ action: 'UPDATE_STATUS', entityType: 'ARTICLE', entityId: data.id, entityLabel: data.title, actor: req.user, metadata: { status: data.status } });
+  res.json({ data });
+});
+exports.uploadJournalCover = wrap(async (req, res) => {
+  const data = await journal.uploadCover(idParam(req), req.file);
+  await activity.logActivity({ action: 'UPLOAD_COVER', entityType: 'ARTICLE', entityId: data.id, entityLabel: data.title, actor: req.user });
   res.json({ data });
 });

@@ -52,7 +52,7 @@ export default function NewsletterSection() {
               <button type="submit" className="btn-primary w-full sm:w-auto">
                 Inscrever <Send size={15} />
               </button>
-              <p className={`min-h-5 text-xs ${status.type === 'error' ? 'text-red-300' : 'text-electric-light'}`} aria-live="polite">
+              <p className={`min-h-5 text-xs ${status.type === 'error' ?'text-red-300' : 'text-electric-light'}`} aria-live="polite">
                 {status.message}
               </p>
             </form>

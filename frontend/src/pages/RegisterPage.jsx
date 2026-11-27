@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Loader2, UserPlus } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -7,7 +7,7 @@ import { getErrorMessage } from '../services/api';
 function Field({ label, error, children }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-sm font-medium text-slate-300">{label}</span>
+      <span className="mb-2 block text-sm font-medium text-sub">{label}</span>
       {children}
       {error && <span className="mt-1.5 block text-xs text-red-300">{error}</span>}
     </label>
@@ -29,9 +29,9 @@ function RegisterPage() {
   const validate = () => {
     const next = {};
     if (form.name.trim().length < 2) next.name = 'Informe seu nome.';
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim())) next.email = 'E-mail inválido.';
-    if (form.password.length < 8 || !/[A-Za-z]/.test(form.password) || !/[0-9]/.test(form.password)) next.password = 'Use ao menos 8 caracteres com letra e número.';
-    if (form.phone && !/^[0-9()+\-\s]{8,20}$/.test(form.phone.trim())) next.phone = 'Telefone inválido.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim())) next.email = 'E-mail inv?lido.';
+    if (form.password.length < 8 || !/[A-Za-z]/.test(form.password) || !/[0-9]/.test(form.password)) next.password = 'Use ao menos 8 caracteres com letra e n?mero.';
+    if (form.phone && !/^[0-9()+\-\s]{8,20}$/.test(form.phone.trim())) next.phone = 'Telefone inv?lido.';
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -57,7 +57,7 @@ function RegisterPage() {
       <div className="mx-auto max-w-lg surface p-6 sm:p-8">
         <p className="eyebrow">// cadastro</p>
         <h1 className="section-title mt-3 text-3xl">Criar conta</h1>
-        <p className="section-desc">Cadastre-se para salvar endereços e acompanhar seus pedidos.</p>
+        <p className="section-desc">Cadastre-se para salvar endere?os e acompanhar seus pedidos.</p>
 
         <form onSubmit={handleSubmit} className="mt-8 space-y-4">
           <Field label="Nome completo" error={errors.name}><input className="input-field" autoComplete="name" required value={form.name} onChange={set('name')} /></Field>
@@ -66,15 +66,16 @@ function RegisterPage() {
           <Field label="Senha" error={errors.password}><input className="input-field" type="password" autoComplete="new-password" required value={form.password} onChange={set('password')} /></Field>
           {serverError && <p className="text-sm text-red-300">{serverError}</p>}
           <button type="submit" disabled={submitting} className="btn-primary w-full">
-            {submitting ? <Loader2 size={16} className="animate-spin" /> : <UserPlus size={16} />}
-            {submitting ? 'Criando...' : 'Criar conta'}
+            {submitting ?<Loader2 size={16} className="animate-spin" /> : <UserPlus size={16} />}
+            {submitting ?'Criando...' : 'Criar conta'}
           </button>
         </form>
 
-        <p className="mt-5 text-sm text-muted">Já tem conta? <Link to="/login" state={{ from: location.state?.from }} className="text-electric-light hover:underline">Entrar</Link></p>
+        <p className="mt-5 text-sm text-muted">J? tem conta?<Link to="/login" state={{ from: location.state?.from }} className="text-electric-light hover:underline">Entrar</Link></p>
       </div>
     </div>
   );
 }
 
 export default RegisterPage;
+

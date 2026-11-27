@@ -6,6 +6,10 @@ const cartRoutes = require('./cart.routes');
 const authRoutes = require('./auth.routes');
 const addressRoutes = require('./addresses.routes');
 const adminRoutes = require('./admin.routes');
+const rootAccessRoutes = require('./root-access.routes');
+const accountRoutes = require('./account.routes');
+const journalRoutes = require('./journal.routes');
+const communityRoutes = require('./community.routes');
 
 const router = Router();
 
@@ -20,5 +24,9 @@ router.use('/categories', categoryRoutes);
 router.use('/products', productRoutes);
 router.use('/cart', cartRoutes);
 router.use('/orders', orderRoutes);
+router.use('/root-access', rootAccessRoutes);
+router.use('/account', accountRoutes);
+router.use('/journal', journalRoutes);
+router.use('/community', communityRoutes);
 
 module.exports = router;

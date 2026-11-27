@@ -42,6 +42,7 @@ test('GET /api/products filtra por faixa de preço', async () => {
 test('GET /api/products/:slug retorna galeria e especificações', async () => {
   const list = await request(app).get('/api/products?pageSize=48').expect(200);
   const candidate = list.body.data.find((p) => p.slug && p.slug !== 'teclado-mecanico-wired-k87') || list.body.data[0];
+  assert.notEqual(candidate.slug, 'teclado-mecanico-wired-k87');
   assert.ok(candidate, 'precisa de produto para testar slug');
   const response = await request(app).get(`/api/products/${candidate.slug}`).expect(200);
   assert.ok(Array.isArray(response.body.data.images));

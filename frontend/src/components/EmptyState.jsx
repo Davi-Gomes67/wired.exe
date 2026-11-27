@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 
 export default function EmptyState({ icon: Icon, title, description, actionTo, actionLabel }) {
   return (
@@ -8,7 +8,7 @@ export default function EmptyState({ icon: Icon, title, description, actionTo, a
           <Icon size={26} strokeWidth={1.7} />
         </span>
       )}
-      <h3 className="text-lg font-semibold text-[#D7EBDD]">{title}</h3>
+      <h3 className="text-lg font-semibold text-base">{title}</h3>
       {description && <p className="mt-2 max-w-md text-sm leading-relaxed text-muted">{description}</p>}
       {actionTo && actionLabel && (
         <Link to={actionTo} className="btn-primary mt-6">
@@ -18,3 +18,4 @@ export default function EmptyState({ icon: Icon, title, description, actionTo, a
     </div>
   );
 }
+

@@ -1,5 +1,5 @@
 const {
-  register, login, getMe, updateProfile, changePassword, requestPasswordReset, resetPassword,
+  register, login, getMe, updateProfile, updateAvatar, changePassword, requestPasswordReset, resetPassword,
 } = require('../services/auth.service');
 
 const registerController = async (req, res, next) => {
@@ -19,6 +19,11 @@ const meController = async (req, res, next) => {
 
 const updateProfileController = async (req, res, next) => {
   try { res.json({ data: await updateProfile(req.user.id, req.validatedProfile) }); }
+  catch (error) { next(error); }
+};
+
+const uploadAvatarController = async (req, res, next) => {
+  try { res.json({ data: await updateAvatar(req.user.id, req.file) }); }
   catch (error) { next(error); }
 };
 
@@ -46,6 +51,7 @@ module.exports = {
   login: loginController,
   me: meController,
   updateProfile: updateProfileController,
+  uploadAvatar: uploadAvatarController,
   changePassword: changePasswordController,
   forgotPassword: forgotPasswordController,
   resetPassword: resetPasswordController,

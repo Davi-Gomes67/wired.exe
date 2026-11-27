@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { AlertTriangle, ArrowRight, CheckCircle2, Loader2, RefreshCw, ShoppingCart, Trash2 } from 'lucide-react';
+﻿import { useEffect, useState } from 'react';
+import { AlertTriangle, ArrowRight, CheckCircle2, Loader2, RefreshCw, ShieldCheck, ShoppingCart, Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import EmptyState from '../components/EmptyState';
 import Price from '../components/Price';
 import QuantityStepper from '../components/QuantityStepper';
 import { useCart } from '../context/CartContext';
-import { cartService, getErrorMessage } from '../services/api';
+import { cartService, getErrorMessage, rootAccessService } from '../services/api';
 import { formatPrice } from '../utils/format';
 
 function CartPage() {
@@ -13,6 +13,13 @@ function CartPage() {
   const [validation, setValidation] = useState(null);
   const [validating, setValidating] = useState(false);
   const [validationError, setValidationError] = useState('');
+  const [rootOffer, setRootOffer] = useState(null);
+
+  useEffect(() => {
+    let active = true;
+    rootAccessService.getPublic().then((res) => { if (active) setRootOffer(res.data); }).catch(() => {});
+    return () => { active = false; };
+  }, []);
 
   const runValidation = async () => {
     setValidating(true);
@@ -42,6 +49,7 @@ function CartPage() {
   }
 
   const hasIssues = validation && !validation.valid;
+  const showRoot = rootOffer?.enabled && rootOffer?.offerCart;
 
   return (
     <div className="container-page py-10 sm:py-14">
@@ -55,7 +63,7 @@ function CartPage() {
             const line = validation?.items?.find((v) => v.productId === item.id);
             const conflict = line && !line.valid;
             return (
-              <article key={item.id} className={`surface flex gap-4 p-3 sm:p-4 ${conflict ? 'border-amber-500/40' : ''}`}>
+              <article key={item.id} className={`surface flex gap-4 p-3 sm:p-4 ${conflict ?'border-amber-500/40' : ''}`}>
                 <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-carbon sm:h-24 sm:w-24">
                   <div className="absolute inset-0 bg-grid opacity-40 [background-size:14px_14px]" />
                   {item.imageUrl && (
@@ -66,7 +74,7 @@ function CartPage() {
                 <div className="flex min-w-0 flex-1 flex-col justify-between gap-3">
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <Link to={`/produto/${item.slug}`} className="line-clamp-2 text-sm font-semibold text-[#D7EBDD] hover:text-electric-light">
+                      <Link to={`/produto/${item.slug}`} className="line-clamp-2 text-sm font-semibold text-base hover:text-electric-light">
                         {item.name}
                       </Link>
                       <p className="mt-1 font-mono text-xs text-muted">{formatPrice(item.priceCents)} / un.</p>
@@ -93,20 +101,41 @@ function CartPage() {
                       compact
                       onChange={(value) => { setQuantity(item.id, value); setValidation(null); }}
                     />
-                    <Price cents={item.priceCents * item.quantity} className="text-[#D7EBDD]" />
+                    <Price cents={item.priceCents * item.quantity} className="text-base" />
                   </div>
                 </div>
               </article>
             );
           })}
+
+          {showRoot && (
+            <section className="surface relative overflow-hidden border-electric/25 p-5 sm:p-6">
+              <div className="absolute inset-0 bg-grid opacity-15 [background-size:22px_22px]" />
+              <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="max-w-2xl">
+                  <p className="eyebrow">// UNLOCK ROOT ACCESS</p>
+                  <h2 className="mt-2 font-display text-xl font-bold tracking-tight text-base sm:text-2xl">Your purchase is just the beginning.</h2>
+                  <p className="mt-2 text-sm text-muted">Become a WIRED.exe member and unlock exclusive benefits.</p>
+                  <div className="mt-4 grid gap-2 text-sm text-sub sm:grid-cols-2">
+                    <p className="flex items-center gap-2"><ShieldCheck size={14} className="text-electric-light" /> ROOT ACCESS — {formatPrice(rootOffer.priceCents || 4990)}/mês</p>
+                    <p className="flex items-center gap-2"><ShieldCheck size={14} className="text-electric-light" /> Frete grátis em compras elegíveis</p>
+                    <p className="flex items-center gap-2"><ShieldCheck size={14} className="text-electric-light" /> Mystery Box mensal</p>
+                    <p className="flex items-center gap-2"><ShieldCheck size={14} className="text-electric-light" /> Itens exclusivos e acesso antecipado</p>
+                  </div>
+                  <p className="mt-4 text-xs text-muted">Assinatura opcional, válida enquanto ativa. Sem cobrança automática sem integração configurada.</p>
+                </div>
+                <Link to="/root-access" className="btn-primary shrink-0 sm:w-auto">QUERO SER ROOT MEMBER</Link>
+              </div>
+            </section>
+          )}
         </div>
 
         <aside className="surface h-fit p-5 lg:sticky lg:top-28">
-          <h2 className="text-lg font-semibold text-[#D7EBDD]">Resumo</h2>
+          <h2 className="text-lg font-semibold text-base">Resumo</h2>
           <div className="mt-5 space-y-3 border-t border-line pt-5 text-sm">
             <div className="flex justify-between text-muted">
               <span>Subtotal</span>
-              <Price cents={validation?.subtotalCents ?? totalCents} className="text-slate-200" />
+              <Price cents={validation?.subtotalCents ?? totalCents} className="text-sub" />
             </div>
             <div className="flex justify-between text-muted">
               <span>Frete</span>
@@ -118,8 +147,8 @@ function CartPage() {
             </div>
           </div>
           <div className="mt-5 flex items-center justify-between border-t border-line pt-5">
-            <span className="text-sm font-medium text-slate-300">Total</span>
-            <Price cents={validation?.totalCents ?? totalCents} size="lg" className="text-[#D7EBDD]" />
+            <span className="text-sm font-medium text-sub">Total</span>
+            <Price cents={validation?.totalCents ?? totalCents} size="lg" className="text-base" />
           </div>
 
           {validationError && <p className="mt-4 text-xs text-red-300">{validationError}</p>}
@@ -135,14 +164,14 @@ function CartPage() {
           )}
 
           <button type="button" onClick={runValidation} disabled={validating} className="btn-ghost mt-5 w-full">
-            {validating ? <Loader2 size={16} className="animate-spin" /> : <RefreshCw size={16} />}
-            {validating ? 'Validando...' : 'Validar estoque'}
+            {validating ?<Loader2 size={16} className="animate-spin" /> : <RefreshCw size={16} />}
+            {validating ?'Validando...' : 'Validar estoque'}
           </button>
 
           <Link
-            to={hasIssues ? '#' : '/checkout'}
+            to={hasIssues ?'#' : '/checkout'}
             onClick={(e) => { if (hasIssues) e.preventDefault(); }}
-            className={`btn-primary mt-3 w-full ${hasIssues ? 'pointer-events-none opacity-45' : ''}`}
+            className={`btn-primary mt-3 w-full ${hasIssues ?'pointer-events-none opacity-45' : ''}`}
             aria-disabled={hasIssues}
           >
             Ir para o checkout <ArrowRight size={17} />
@@ -154,3 +183,4 @@ function CartPage() {
 }
 
 export default CartPage;
+

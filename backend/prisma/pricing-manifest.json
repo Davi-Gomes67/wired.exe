@@ -1,842 +1,832 @@
-[
-  {
-    "slug": "display-lcd-16x2",
-    "priceCents": 1990,
-    "compareAtCents": 2490,
-    "stock": 15,
-    "sourceName": "Mercado Livre/Robocore",
-    "sourceUrl": "https://lista.mercadolivre.com.br/display-lcd-16x2",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "jumpers-macho-femea",
-    "priceCents": 1290,
-    "compareAtCents": null,
-    "stock": 40,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/jumpers-macho-femea",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "jumpers-macho-macho",
-    "priceCents": 1190,
-    "compareAtCents": null,
-    "stock": 40,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/jumpers-macho-macho",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-de-capacitores",
-    "priceCents": 2990,
-    "compareAtCents": 3490,
-    "stock": 20,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/kit-capacitores-eletronica",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-de-resistores",
-    "priceCents": 2490,
-    "compareAtCents": 2990,
-    "stock": 25,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/kit-resistores",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-modulo-rfid-rc522",
-    "priceCents": 2490,
-    "compareAtCents": 2990,
-    "stock": 18,
-    "sourceName": "Mercado Livre/Usinainfo",
-    "sourceUrl": "https://lista.mercadolivre.com.br/modulo-rfid-rc522",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "modulo-rele-5v",
-    "priceCents": 1490,
-    "compareAtCents": null,
-    "stock": 30,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/modulo-rele-5v",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "protoboard-1660-pontos",
-    "priceCents": 3990,
-    "compareAtCents": 4490,
-    "stock": 20,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/protoboard-1660-pontos",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "protoboard-830-pontos",
-    "priceCents": 1990,
-    "compareAtCents": 2490,
-    "stock": 30,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/protoboard-830-pontos",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "sensor-de-temperatura-ds18b20",
-    "priceCents": 1690,
-    "compareAtCents": null,
-    "stock": 25,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/sensor-ds18b20",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "sensor-dht22",
-    "priceCents": 2990,
-    "compareAtCents": 3490,
-    "stock": 20,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/sensor-dht22",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "sensor-ultrassonico-hc-sr04",
-    "priceCents": 1490,
-    "compareAtCents": null,
-    "stock": 35,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/sensor-hc-sr04",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "action-figure-lain",
-    "priceCents": 18990,
-    "compareAtCents": 21990,
-    "stock": 6,
-    "sourceName": "Mercado Livre/collectibles",
-    "sourceUrl": "https://lista.mercadolivre.com.br/serial-experiments-lain-figure",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "action-figure-mini-lain",
-    "priceCents": 9990,
-    "compareAtCents": 11990,
-    "stock": 10,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/lain-figure",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "action-figure-mini-lain-pijama",
-    "priceCents": 10990,
-    "compareAtCents": 12990,
-    "stock": 8,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/lain-figure",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "figure-matrix",
-    "priceCents": 14990,
-    "compareAtCents": 17990,
-    "stock": 8,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/matrix-figure",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "fran-bow-figure",
-    "priceCents": 12990,
-    "compareAtCents": 14990,
-    "stock": 7,
-    "sourceName": "Mercado Livre/Etsy import",
-    "sourceUrl": "https://lista.mercadolivre.com.br/fran-bow-figure",
-    "confidence": "estimated",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "funko-cuphead",
-    "priceCents": 13990,
-    "compareAtCents": 15990,
-    "stock": 12,
-    "sourceName": "Amazon BR/Mercado Livre",
-    "sourceUrl": "https://www.amazon.com.br/s?k=funko+cuphead",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "funko-goku-e-kuririn",
-    "priceCents": 24990,
-    "compareAtCents": 28990,
-    "stock": 6,
-    "sourceName": "Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=funko+goku+kuririn",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "funko-naruto",
-    "priceCents": 12990,
-    "compareAtCents": 14990,
-    "stock": 15,
-    "sourceName": "Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=funko+naruto",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-figure-sally-face",
-    "priceCents": 15990,
-    "compareAtCents": 18990,
-    "stock": 5,
-    "sourceName": "Mercado Livre/Etsy import",
-    "sourceUrl": "https://lista.mercadolivre.com.br/sally-face-figure",
-    "confidence": "estimated",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-funko-harry-potter",
-    "priceCents": 29990,
-    "compareAtCents": 34990,
-    "stock": 5,
-    "sourceName": "Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=funko+harry+potter+kit",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-mini-figures-jojo",
-    "priceCents": 11990,
-    "compareAtCents": 13990,
-    "stock": 8,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/jojo-figure-kit",
-    "confidence": "estimated",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-mini-figure-jojo-2",
-    "priceCents": 11990,
-    "compareAtCents": 13990,
-    "stock": 8,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/jojo-figure-kit",
-    "confidence": "estimated",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-omori-figures",
-    "priceCents": 16990,
-    "compareAtCents": 19990,
-    "stock": 5,
-    "sourceName": "Mercado Livre/Etsy import",
-    "sourceUrl": "https://lista.mercadolivre.com.br/omori-figure",
-    "confidence": "estimated",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "suporte-headset",
-    "priceCents": 4990,
-    "compareAtCents": 5990,
-    "stock": 20,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/suporte-headset-gamer",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "arch-camiseta",
-    "priceCents": 7990,
-    "compareAtCents": 8990,
-    "stock": 20,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/camiseta-arch-linux",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "bone-do-bmo",
-    "priceCents": 6990,
-    "compareAtCents": 7990,
-    "stock": 12,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/bone-bmo-adventure-time",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "bone-do-jake",
-    "priceCents": 6990,
-    "compareAtCents": 7990,
-    "stock": 12,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/bone-jake-adventure-time",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "camiseta-cyberpunk",
-    "priceCents": 7990,
-    "compareAtCents": 9990,
-    "stock": 25,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/camiseta-cyberpunk",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "camiseta-win-95",
-    "priceCents": 7990,
-    "compareAtCents": 8990,
-    "stock": 20,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/camiseta-windows-95",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "camiseta-windows-tela-azul",
-    "priceCents": 7990,
-    "compareAtCents": 8990,
-    "stock": 20,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/camiseta-tela-azul-windows",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "f-windows",
-    "priceCents": 7990,
-    "compareAtCents": 8990,
-    "stock": 18,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/camiseta-windows",
-    "confidence": "estimated",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "jaqueta-playstation",
-    "priceCents": 18990,
-    "compareAtCents": 22990,
-    "stock": 8,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/jaqueta-playstation",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "jaqueta-xbox",
-    "priceCents": 18990,
-    "compareAtCents": 22990,
-    "stock": 8,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/jaqueta-xbox",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-casal-nerd-pac-man",
-    "priceCents": 14990,
-    "compareAtCents": 17990,
-    "stock": 10,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/camiseta-casal-pac-man",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-winrar-assinatura-vitalicia-para-usuarios",
-    "priceCents": 8990,
-    "compareAtCents": 9990,
-    "stock": 15,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/camiseta-winrar",
-    "confidence": "estimated",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "lain",
-    "priceCents": 7990,
-    "compareAtCents": 9990,
-    "stock": 15,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/camiseta-serial-experiments-lain",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "pac-man-camiseta",
-    "priceCents": 7490,
-    "compareAtCents": 8990,
-    "stock": 20,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/camiseta-pac-man",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "pac-man-camiseta-ghosts",
-    "priceCents": 7490,
-    "compareAtCents": 8990,
-    "stock": 20,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/camiseta-pac-man-fantasmas",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "pac-man-manga-longa-comprida",
-    "priceCents": 9990,
-    "compareAtCents": 11990,
-    "stock": 15,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/camiseta-manga-longa-pac-man",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "winrar-camisa",
-    "priceCents": 7990,
-    "compareAtCents": 8990,
-    "stock": 15,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/camisa-winrar",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "winrar-moletom",
-    "priceCents": 14990,
-    "compareAtCents": 17990,
-    "stock": 10,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/moletom-winrar",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "arduino-mega-2560-r3",
-    "priceCents": 12990,
-    "compareAtCents": 14990,
-    "stock": 12,
-    "sourceName": "Ba� da Eletr�nica/Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/arduino-mega-2560-r3",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "arduino-nano-v3",
-    "priceCents": 3990,
-    "compareAtCents": 4990,
-    "stock": 25,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/arduino-nano-v3",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "arduino-uno-r3",
-    "priceCents": 5990,
-    "compareAtCents": 6990,
-    "stock": 30,
-    "sourceName": "Amazon BR/Ba� da Eletr�nica",
-    "sourceUrl": "https://www.amazon.com.br/s?k=arduino+uno+r3",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "esp32-devkit-v1",
-    "priceCents": 4990,
-    "compareAtCents": 5990,
-    "stock": 25,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/esp32-devkit-v1",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "esp32-s3-box-3",
-    "priceCents": 24990,
-    "compareAtCents": 28990,
-    "stock": 6,
-    "sourceName": "Mercado Livre/Espressif",
-    "sourceUrl": "https://lista.mercadolivre.com.br/esp32-s3-box-3",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "raspberry-pi-5",
-    "priceCents": 59990,
-    "compareAtCents": 69990,
-    "stock": 8,
-    "sourceName": "Robocore/Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/raspberry-pi-5",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "raspberry-pi-pico",
-    "priceCents": 3490,
-    "compareAtCents": 3990,
-    "stock": 25,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/raspberry-pi-pico",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "raspberry-pi-zero-2-w",
-    "priceCents": 12990,
-    "compareAtCents": 14990,
-    "stock": 10,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/raspberry-pi-zero-2-w",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "seeed-studio-xiao-esp32c3",
-    "priceCents": 6990,
-    "compareAtCents": 7990,
-    "stock": 15,
-    "sourceName": "Mercado Livre/Seeed",
-    "sourceUrl": "https://lista.mercadolivre.com.br/seeed-xiao-esp32c3",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "controle-switch",
-    "priceCents": 24990,
-    "compareAtCents": 29990,
-    "stock": 10,
-    "sourceName": "Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=controle+nintendo+switch",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "controle-xbox",
-    "priceCents": 39990,
-    "compareAtCents": 44990,
-    "stock": 10,
-    "sourceName": "Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=controle+xbox",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "corsair-hs35-v2",
-    "priceCents": 29990,
-    "compareAtCents": 34990,
-    "stock": 8,
-    "sourceName": "Amazon BR/Kabum",
-    "sourceUrl": "https://www.amazon.com.br/s?k=corsair+hs35+v2",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "havit-h2002d",
-    "priceCents": 18990,
-    "compareAtCents": 22990,
-    "stock": 12,
-    "sourceName": "Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=havit+h2002d",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "hyperx-cloud-iii",
-    "priceCents": 49990,
-    "compareAtCents": 59990,
-    "stock": 8,
-    "sourceName": "Kabum/Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=hyperx+cloud+iii",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "hyperx-cloud-iii-preto",
-    "priceCents": 49990,
-    "compareAtCents": 59990,
-    "stock": 8,
-    "sourceName": "Kabum/Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=hyperx+cloud+iii+preto",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-teclado-e-mouse-gamer-mancer-krinius-v2-rainbow-6400dpi",
-    "priceCents": 14990,
-    "compareAtCents": 17990,
-    "stock": 15,
-    "sourceName": "Pichau/Mancer",
-    "sourceUrl": "https://lista.mercadolivre.com.br/kit-teclado-mouse-mancer-krinius",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "logitech-g-pro-x-60",
-    "priceCents": 99990,
-    "compareAtCents": 109990,
-    "stock": 5,
-    "sourceName": "Kabum/Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=logitech+g+pro+x+60",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "logitech-g-pro-x-60-preto",
-    "priceCents": 99990,
-    "compareAtCents": 109990,
-    "stock": 5,
-    "sourceName": "Kabum/Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=logitech+g+pro+x+60+preto",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "logitech-g305-lightspeed",
-    "priceCents": 24990,
-    "compareAtCents": 29990,
-    "stock": 15,
-    "sourceName": "Amazon BR/Kabum",
-    "sourceUrl": "https://www.amazon.com.br/s?k=logitech+g305",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "mousepad-logitech-g640",
-    "priceCents": 19990,
-    "compareAtCents": 22990,
-    "stock": 12,
-    "sourceName": "Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=logitech+g640",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "ps5-controle",
-    "priceCents": 39990,
-    "compareAtCents": 44990,
-    "stock": 10,
-    "sourceName": "Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=controle+ps5+dualsense",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "redragon-fidd-rgb",
-    "priceCents": 14990,
-    "compareAtCents": 17990,
-    "stock": 12,
-    "sourceName": "Mercado Livre/Redragon",
-    "sourceUrl": "https://lista.mercadolivre.com.br/redragon-fidd",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "redragon-lakshmi-k606",
-    "priceCents": 19990,
-    "compareAtCents": 24990,
-    "stock": 10,
-    "sourceName": "Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=redragon+lakshmi+k606",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "redragon-storm-elite",
-    "priceCents": 17990,
-    "compareAtCents": 19990,
-    "stock": 12,
-    "sourceName": "Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=redragon+storm+elite",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "ugreen-usb-c-hub-6-em-1",
-    "priceCents": 14990,
-    "compareAtCents": 17990,
-    "stock": 15,
-    "sourceName": "Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=ugreen+usb-c+hub+6+em+1",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "anbernic-rg34xx",
-    "priceCents": 39990,
-    "compareAtCents": 44990,
-    "stock": 6,
-    "sourceName": "AliExpress/Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/anbernic-rg34xx",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "anbernic-rg35xx-h",
-    "priceCents": 44990,
-    "compareAtCents": 49990,
-    "stock": 6,
-    "sourceName": "AliExpress/Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/anbernic-rg35xx-h",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "controle-usb-super-nintendo",
-    "priceCents": 5990,
-    "compareAtCents": 7990,
-    "stock": 20,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/controle-usb-super-nintendo",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "flipper-zero",
-    "priceCents": 149990,
-    "compareAtCents": 169990,
-    "stock": 4,
-    "sourceName": "Mercado Livre/importadores",
-    "sourceUrl": "https://lista.mercadolivre.com.br/flipper-zero",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "playdate",
-    "priceCents": 199990,
-    "compareAtCents": 229990,
-    "stock": 2,
-    "sourceName": "Panic/importadores",
-    "sourceUrl": "https://lista.mercadolivre.com.br/playdate-console",
-    "confidence": "estimated",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "r36s-retro-handheld",
-    "priceCents": 19990,
-    "compareAtCents": 24990,
-    "stock": 15,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/r36s",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "raspberry-pi-500",
-    "priceCents": 79990,
-    "compareAtCents": 89990,
-    "stock": 4,
-    "sourceName": "Mercado Livre/importadores",
-    "sourceUrl": "https://lista.mercadolivre.com.br/raspberry-pi-500",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "trimui-smart-pro",
-    "priceCents": 39990,
-    "compareAtCents": 44990,
-    "stock": 6,
-    "sourceName": "Mercado Livre/AliExpress",
-    "sourceUrl": "https://lista.mercadolivre.com.br/trimui-smart-pro",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "arduino-starter-kit",
-    "priceCents": 49990,
-    "compareAtCents": 54990,
-    "stock": 8,
-    "sourceName": "Amazon BR/Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/arduino-starter-kit",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "elegoo-uno-r3-project-super-starter-kit",
-    "priceCents": 29990,
-    "compareAtCents": 34990,
-    "stock": 10,
-    "sourceName": "Amazon BR",
-    "sourceUrl": "https://www.amazon.com.br/s?k=elegoo+uno+r3+starter+kit",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "esp32-starter-kit",
-    "priceCents": 19990,
-    "compareAtCents": 24990,
-    "stock": 12,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/esp32-starter-kit",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-de-protoboard-e-aderecos",
-    "priceCents": 8990,
-    "compareAtCents": 10990,
-    "stock": 15,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/kit-protoboard-jumpers",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "kit-de-soldagem",
-    "priceCents": 14990,
-    "compareAtCents": 17990,
-    "stock": 12,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/kit-soldagem-eletronica",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "raspberry-pi-5-starter-kit",
-    "priceCents": 89990,
-    "compareAtCents": 99990,
-    "stock": 5,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/raspberry-pi-5-starter-kit",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "raspberry-pi-pico-starter-kit",
-    "priceCents": 14990,
-    "compareAtCents": 17990,
-    "stock": 10,
-    "sourceName": "Mercado Livre",
-    "sourceUrl": "https://lista.mercadolivre.com.br/raspberry-pi-pico-starter-kit",
-    "confidence": "market",
-    "checkedAt": "2026-11-24"
-  },
-  {
-    "slug": "teclado-mecanico-wired-k87",
-    "priceCents": 44990,
-    "compareAtCents": null,
-    "stock": 10,
-    "sourceName": "WIRED.exe catalog",
-    "sourceUrl": "local://wired-k87",
-    "confidence": "curated",
-    "checkedAt": "2026-11-24"
-  }
+﻿[
+    {
+        "slug":  "display-lcd-16x2",
+        "priceCents":  1990,
+        "compareAtCents":  2490,
+        "stock":  15,
+        "sourceName":  "Mercado Livre/Robocore",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/display-lcd-16x2",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "jumpers-macho-femea",
+        "priceCents":  1290,
+        "compareAtCents":  null,
+        "stock":  40,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/jumpers-macho-femea",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "jumpers-macho-macho",
+        "priceCents":  1190,
+        "compareAtCents":  null,
+        "stock":  40,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/jumpers-macho-macho",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-de-capacitores",
+        "priceCents":  2990,
+        "compareAtCents":  3490,
+        "stock":  20,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/kit-capacitores-eletronica",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-de-resistores",
+        "priceCents":  2490,
+        "compareAtCents":  2990,
+        "stock":  25,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/kit-resistores",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-modulo-rfid-rc522",
+        "priceCents":  2490,
+        "compareAtCents":  2990,
+        "stock":  18,
+        "sourceName":  "Mercado Livre/Usinainfo",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/modulo-rfid-rc522",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "modulo-rele-5v",
+        "priceCents":  1490,
+        "compareAtCents":  null,
+        "stock":  30,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/modulo-rele-5v",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "protoboard-1660-pontos",
+        "priceCents":  3990,
+        "compareAtCents":  4490,
+        "stock":  20,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/protoboard-1660-pontos",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "protoboard-830-pontos",
+        "priceCents":  1990,
+        "compareAtCents":  2490,
+        "stock":  30,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/protoboard-830-pontos",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "sensor-de-temperatura-ds18b20",
+        "priceCents":  1690,
+        "compareAtCents":  null,
+        "stock":  25,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/sensor-ds18b20",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "sensor-dht22",
+        "priceCents":  2990,
+        "compareAtCents":  3490,
+        "stock":  20,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/sensor-dht22",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "sensor-ultrassonico-hc-sr04",
+        "priceCents":  1490,
+        "compareAtCents":  null,
+        "stock":  35,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/sensor-hc-sr04",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "action-figure-lain",
+        "priceCents":  18990,
+        "compareAtCents":  21990,
+        "stock":  6,
+        "sourceName":  "Mercado Livre/collectibles",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/serial-experiments-lain-figure",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "action-figure-mini-lain",
+        "priceCents":  9990,
+        "compareAtCents":  11990,
+        "stock":  10,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/lain-figure",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "action-figure-mini-lain-pijama",
+        "priceCents":  10990,
+        "compareAtCents":  12990,
+        "stock":  8,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/lain-figure",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "figure-matrix",
+        "priceCents":  14990,
+        "compareAtCents":  17990,
+        "stock":  8,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/matrix-figure",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "fran-bow-figure",
+        "priceCents":  12990,
+        "compareAtCents":  14990,
+        "stock":  7,
+        "sourceName":  "Mercado Livre/Etsy import",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/fran-bow-figure",
+        "confidence":  "estimated",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "funko-cuphead",
+        "priceCents":  13990,
+        "compareAtCents":  15990,
+        "stock":  12,
+        "sourceName":  "Amazon BR/Mercado Livre",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=funko+cuphead",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "funko-goku-e-kuririn",
+        "priceCents":  24990,
+        "compareAtCents":  28990,
+        "stock":  6,
+        "sourceName":  "Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=funko+goku+kuririn",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "funko-naruto",
+        "priceCents":  12990,
+        "compareAtCents":  14990,
+        "stock":  15,
+        "sourceName":  "Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=funko+naruto",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-figure-sally-face",
+        "priceCents":  15990,
+        "compareAtCents":  18990,
+        "stock":  5,
+        "sourceName":  "Mercado Livre/Etsy import",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/sally-face-figure",
+        "confidence":  "estimated",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-funko-harry-potter",
+        "priceCents":  29990,
+        "compareAtCents":  34990,
+        "stock":  5,
+        "sourceName":  "Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=funko+harry+potter+kit",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-mini-figures-jojo",
+        "priceCents":  11990,
+        "compareAtCents":  13990,
+        "stock":  8,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/jojo-figure-kit",
+        "confidence":  "estimated",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-mini-figure-jojo-2",
+        "priceCents":  11990,
+        "compareAtCents":  13990,
+        "stock":  8,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/jojo-figure-kit",
+        "confidence":  "estimated",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-omori-figures",
+        "priceCents":  16990,
+        "compareAtCents":  19990,
+        "stock":  5,
+        "sourceName":  "Mercado Livre/Etsy import",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/omori-figure",
+        "confidence":  "estimated",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "suporte-headset",
+        "priceCents":  4990,
+        "compareAtCents":  5990,
+        "stock":  20,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/suporte-headset-gamer",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "arch-camiseta",
+        "priceCents":  7990,
+        "compareAtCents":  8990,
+        "stock":  20,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/camiseta-arch-linux",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "bone-do-bmo",
+        "priceCents":  6990,
+        "compareAtCents":  7990,
+        "stock":  12,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/bone-bmo-adventure-time",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "bone-do-jake",
+        "priceCents":  6990,
+        "compareAtCents":  7990,
+        "stock":  12,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/bone-jake-adventure-time",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "camiseta-cyberpunk",
+        "priceCents":  7990,
+        "compareAtCents":  9990,
+        "stock":  25,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/camiseta-cyberpunk",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "camiseta-win-95",
+        "priceCents":  7990,
+        "compareAtCents":  8990,
+        "stock":  20,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/camiseta-windows-95",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "camiseta-windows-tela-azul",
+        "priceCents":  7990,
+        "compareAtCents":  8990,
+        "stock":  20,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/camiseta-tela-azul-windows",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "f-windows",
+        "priceCents":  7990,
+        "compareAtCents":  8990,
+        "stock":  18,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/camiseta-windows",
+        "confidence":  "estimated",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "jaqueta-playstation",
+        "priceCents":  18990,
+        "compareAtCents":  22990,
+        "stock":  8,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/jaqueta-playstation",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "jaqueta-xbox",
+        "priceCents":  18990,
+        "compareAtCents":  22990,
+        "stock":  8,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/jaqueta-xbox",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-casal-nerd-pac-man",
+        "priceCents":  14990,
+        "compareAtCents":  17990,
+        "stock":  10,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/camiseta-casal-pac-man",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-winrar-assinatura-vitalicia-para-usuarios",
+        "priceCents":  8990,
+        "compareAtCents":  9990,
+        "stock":  15,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/camiseta-winrar",
+        "confidence":  "estimated",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "lain",
+        "priceCents":  7990,
+        "compareAtCents":  9990,
+        "stock":  15,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/camiseta-serial-experiments-lain",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "pac-man-camiseta",
+        "priceCents":  7490,
+        "compareAtCents":  8990,
+        "stock":  20,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/camiseta-pac-man",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "pac-man-camiseta-ghosts",
+        "priceCents":  7490,
+        "compareAtCents":  8990,
+        "stock":  20,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/camiseta-pac-man-fantasmas",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "pac-man-manga-longa-comprida",
+        "priceCents":  9990,
+        "compareAtCents":  11990,
+        "stock":  15,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/camiseta-manga-longa-pac-man",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "winrar-camisa",
+        "priceCents":  7990,
+        "compareAtCents":  8990,
+        "stock":  15,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/camisa-winrar",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "winrar-moletom",
+        "priceCents":  14990,
+        "compareAtCents":  17990,
+        "stock":  10,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/moletom-winrar",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "arduino-mega-2560-r3",
+        "priceCents":  12990,
+        "compareAtCents":  14990,
+        "stock":  12,
+                         "sourceName":  "Ba?da Eletr?nica/Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/arduino-mega-2560-r3",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "arduino-nano-v3",
+        "priceCents":  3990,
+        "compareAtCents":  4990,
+        "stock":  25,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/arduino-nano-v3",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "arduino-uno-r3",
+        "priceCents":  5990,
+        "compareAtCents":  6990,
+        "stock":  30,
+                         "sourceName":  "Amazon BR/Ba?da Eletr?nica",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=arduino+uno+r3",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "esp32-devkit-v1",
+        "priceCents":  4990,
+        "compareAtCents":  5990,
+        "stock":  25,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/esp32-devkit-v1",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "esp32-s3-box-3",
+        "priceCents":  24990,
+        "compareAtCents":  28990,
+        "stock":  6,
+        "sourceName":  "Mercado Livre/Espressif",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/esp32-s3-box-3",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "raspberry-pi-5",
+        "priceCents":  59990,
+        "compareAtCents":  69990,
+        "stock":  8,
+        "sourceName":  "Robocore/Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/raspberry-pi-5",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "raspberry-pi-pico",
+        "priceCents":  3490,
+        "compareAtCents":  3990,
+        "stock":  25,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/raspberry-pi-pico",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "raspberry-pi-zero-2-w",
+        "priceCents":  12990,
+        "compareAtCents":  14990,
+        "stock":  10,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/raspberry-pi-zero-2-w",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "seeed-studio-xiao-esp32c3",
+        "priceCents":  6990,
+        "compareAtCents":  7990,
+        "stock":  15,
+        "sourceName":  "Mercado Livre/Seeed",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/seeed-xiao-esp32c3",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "controle-switch",
+        "priceCents":  24990,
+        "compareAtCents":  29990,
+        "stock":  10,
+        "sourceName":  "Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=controle+nintendo+switch",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "controle-xbox",
+        "priceCents":  39990,
+        "compareAtCents":  44990,
+        "stock":  10,
+        "sourceName":  "Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=controle+xbox",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "corsair-hs35-v2",
+        "priceCents":  29990,
+        "compareAtCents":  34990,
+        "stock":  8,
+        "sourceName":  "Amazon BR/Kabum",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=corsair+hs35+v2",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "havit-h2002d",
+        "priceCents":  18990,
+        "compareAtCents":  22990,
+        "stock":  12,
+        "sourceName":  "Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=havit+h2002d",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "hyperx-cloud-iii",
+        "priceCents":  49990,
+        "compareAtCents":  59990,
+        "stock":  8,
+        "sourceName":  "Kabum/Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=hyperx+cloud+iii",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "hyperx-cloud-iii-preto",
+        "priceCents":  49990,
+        "compareAtCents":  59990,
+        "stock":  8,
+        "sourceName":  "Kabum/Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=hyperx+cloud+iii+preto",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-teclado-e-mouse-gamer-mancer-krinius-v2-rainbow-6400dpi",
+        "priceCents":  14990,
+        "compareAtCents":  17990,
+        "stock":  15,
+        "sourceName":  "Pichau/Mancer",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/kit-teclado-mouse-mancer-krinius",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "logitech-g-pro-x-60",
+        "priceCents":  99990,
+        "compareAtCents":  109990,
+        "stock":  5,
+        "sourceName":  "Kabum/Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=logitech+g+pro+x+60",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "logitech-g-pro-x-60-preto",
+        "priceCents":  99990,
+        "compareAtCents":  109990,
+        "stock":  5,
+        "sourceName":  "Kabum/Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=logitech+g+pro+x+60+preto",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "logitech-g305-lightspeed",
+        "priceCents":  24990,
+        "compareAtCents":  29990,
+        "stock":  15,
+        "sourceName":  "Amazon BR/Kabum",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=logitech+g305",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "mousepad-logitech-g640",
+        "priceCents":  19990,
+        "compareAtCents":  22990,
+        "stock":  12,
+        "sourceName":  "Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=logitech+g640",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "ps5-controle",
+        "priceCents":  39990,
+        "compareAtCents":  44990,
+        "stock":  10,
+        "sourceName":  "Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=controle+ps5+dualsense",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "redragon-fidd-rgb",
+        "priceCents":  14990,
+        "compareAtCents":  17990,
+        "stock":  12,
+        "sourceName":  "Mercado Livre/Redragon",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/redragon-fidd",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "redragon-lakshmi-k606",
+        "priceCents":  19990,
+        "compareAtCents":  24990,
+        "stock":  10,
+        "sourceName":  "Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=redragon+lakshmi+k606",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "redragon-storm-elite",
+        "priceCents":  17990,
+        "compareAtCents":  19990,
+        "stock":  12,
+        "sourceName":  "Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=redragon+storm+elite",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "ugreen-usb-c-hub-6-em-1",
+        "priceCents":  14990,
+        "compareAtCents":  17990,
+        "stock":  15,
+        "sourceName":  "Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=ugreen+usb-c+hub+6+em+1",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "anbernic-rg34xx",
+        "priceCents":  39990,
+        "compareAtCents":  44990,
+        "stock":  6,
+        "sourceName":  "AliExpress/Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/anbernic-rg34xx",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "anbernic-rg35xx-h",
+        "priceCents":  44990,
+        "compareAtCents":  49990,
+        "stock":  6,
+        "sourceName":  "AliExpress/Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/anbernic-rg35xx-h",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "controle-usb-super-nintendo",
+        "priceCents":  5990,
+        "compareAtCents":  7990,
+        "stock":  20,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/controle-usb-super-nintendo",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "flipper-zero",
+        "priceCents":  149990,
+        "compareAtCents":  169990,
+        "stock":  4,
+        "sourceName":  "Mercado Livre/importadores",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/flipper-zero",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "playdate",
+        "priceCents":  199990,
+        "compareAtCents":  229990,
+        "stock":  2,
+        "sourceName":  "Panic/importadores",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/playdate-console",
+        "confidence":  "estimated",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "r36s-retro-handheld",
+        "priceCents":  19990,
+        "compareAtCents":  24990,
+        "stock":  15,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/r36s",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "raspberry-pi-500",
+        "priceCents":  79990,
+        "compareAtCents":  89990,
+        "stock":  4,
+        "sourceName":  "Mercado Livre/importadores",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/raspberry-pi-500",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "trimui-smart-pro",
+        "priceCents":  39990,
+        "compareAtCents":  44990,
+        "stock":  6,
+        "sourceName":  "Mercado Livre/AliExpress",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/trimui-smart-pro",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "arduino-starter-kit",
+        "priceCents":  49990,
+        "compareAtCents":  54990,
+        "stock":  8,
+        "sourceName":  "Amazon BR/Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/arduino-starter-kit",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "elegoo-uno-r3-project-super-starter-kit",
+        "priceCents":  29990,
+        "compareAtCents":  34990,
+        "stock":  10,
+        "sourceName":  "Amazon BR",
+        "sourceUrl":  "https://www.amazon.com.br/s?k=elegoo+uno+r3+starter+kit",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "esp32-starter-kit",
+        "priceCents":  19990,
+        "compareAtCents":  24990,
+        "stock":  12,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/esp32-starter-kit",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-de-protoboard-e-aderecos",
+        "priceCents":  8990,
+        "compareAtCents":  10990,
+        "stock":  15,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/kit-protoboard-jumpers",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "kit-de-soldagem",
+        "priceCents":  14990,
+        "compareAtCents":  17990,
+        "stock":  12,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/kit-soldagem-eletronica",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "raspberry-pi-5-starter-kit",
+        "priceCents":  89990,
+        "compareAtCents":  99990,
+        "stock":  5,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/raspberry-pi-5-starter-kit",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    },
+    {
+        "slug":  "raspberry-pi-pico-starter-kit",
+        "priceCents":  14990,
+        "compareAtCents":  17990,
+        "stock":  10,
+        "sourceName":  "Mercado Livre",
+        "sourceUrl":  "https://lista.mercadolivre.com.br/raspberry-pi-pico-starter-kit",
+        "confidence":  "market",
+        "checkedAt":  "2026-11-24"
+    }
 ]

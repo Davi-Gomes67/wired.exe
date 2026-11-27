@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { Loader2, LogOut, MapPin, Plus, Save, Trash2, User } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { addressService, authService, getErrorMessage } from '../services/api';
@@ -9,7 +9,7 @@ const EMPTY_ADDRESS = {
 };
 
 function Field({ label, children }) {
-  return <label className="block"><span className="mb-1.5 block text-xs font-medium text-slate-300">{label}</span>{children}</label>;
+  return <label className="block"><span className="mb-1.5 block text-xs font-medium text-sub">{label}</span>{children}</label>;
 }
 
 function AccountPage() {
@@ -56,9 +56,9 @@ function AccountPage() {
       if (!payload.phone) delete payload.phone;
       if (!payload.addressLine2) delete payload.addressLine2;
       const res = await addressService.create(payload);
-      setAddresses((prev) => [res.data, ...prev.map((a) => payload.isDefault ? { ...a, isDefault: false } : a)]);
+      setAddresses((prev) => [res.data, ...prev.map((a) => payload.isDefault ?{ ...a, isDefault: false } : a)]);
       setAddrForm(EMPTY_ADDRESS);
-      setAddrMsg('Endereço salvo.');
+      setAddrMsg('Endere?o salvo.');
     } catch (err) { setAddrMsg(getErrorMessage(err)); }
   };
 
@@ -80,51 +80,51 @@ function AccountPage() {
 
       <div className="mt-8 grid gap-6 xl:grid-cols-2">
         <section className="surface p-5 sm:p-6">
-          <div className="flex items-center gap-2 text-[#D7EBDD]"><User size={18} className="text-electric-light" /><h2 className="font-semibold">Perfil</h2></div>
+          <div className="flex items-center gap-2 text-base"><User size={18} className="text-electric-light" /><h2 className="font-semibold">Perfil</h2></div>
           <form onSubmit={saveProfile} className="mt-5 space-y-4">
             <Field label="Nome"><input className="input-field" value={profile.name} onChange={(e) => setProfile({ ...profile, name: e.target.value })} required /></Field>
             <Field label="Telefone"><input className="input-field" value={profile.phone || ''} onChange={(e) => setProfile({ ...profile, phone: e.target.value })} /></Field>
-            {profileMsg && <p className="text-xs text-slate-300">{profileMsg}</p>}
+            {profileMsg && <p className="text-xs text-sub">{profileMsg}</p>}
             <button className="btn-primary"><Save size={16} /> Salvar perfil</button>
           </form>
         </section>
 
         <section className="surface p-5 sm:p-6">
-          <div className="flex items-center gap-2 text-[#D7EBDD]"><KeyRoundIcon /><h2 className="font-semibold">Segurança</h2></div>
+          <div className="flex items-center gap-2 text-base"><KeyRoundIcon /><h2 className="font-semibold">Seguran?a</h2></div>
           <form onSubmit={savePassword} className="mt-5 space-y-4">
             <Field label="Senha atual"><input className="input-field" type="password" value={passwords.currentPassword} onChange={(e) => setPasswords({ ...passwords, currentPassword: e.target.value })} required /></Field>
             <Field label="Nova senha"><input className="input-field" type="password" value={passwords.newPassword} onChange={(e) => setPasswords({ ...passwords, newPassword: e.target.value })} required /></Field>
-            {pwdMsg && <p className="text-xs text-slate-300">{pwdMsg}</p>}
+            {pwdMsg && <p className="text-xs text-sub">{pwdMsg}</p>}
             <button className="btn-primary"><Save size={16} /> Alterar senha</button>
           </form>
         </section>
 
         <section className="surface p-5 sm:p-6 xl:col-span-2">
-          <div className="flex items-center gap-2 text-[#D7EBDD]"><MapPin size={18} className="text-electric-light" /><h2 className="font-semibold">Endereços</h2></div>
+          <div className="flex items-center gap-2 text-base"><MapPin size={18} className="text-electric-light" /><h2 className="font-semibold">Endere?os</h2></div>
           <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_1fr]">
             <form onSubmit={addAddress} className="grid gap-3 sm:grid-cols-2">
               <Field label="Identificador (opcional)"><input className="input-field" value={addrForm.label} onChange={(e) => setAddrForm({ ...addrForm, label: e.target.value })} placeholder="Casa, trabalho..." /></Field>
-              <Field label="Destinatário"><input className="input-field" required value={addrForm.recipientName} onChange={(e) => setAddrForm({ ...addrForm, recipientName: e.target.value })} /></Field>
+              <Field label="Destinat?rio"><input className="input-field" required value={addrForm.recipientName} onChange={(e) => setAddrForm({ ...addrForm, recipientName: e.target.value })} /></Field>
               <Field label="CEP"><input className="input-field" required value={addrForm.postalCode} onChange={(e) => setAddrForm({ ...addrForm, postalCode: e.target.value })} /></Field>
               <Field label="Telefone"><input className="input-field" value={addrForm.phone} onChange={(e) => setAddrForm({ ...addrForm, phone: e.target.value })} /></Field>
-              <div className="sm:col-span-2"><Field label="Endereço"><input className="input-field" required value={addrForm.addressLine1} onChange={(e) => setAddrForm({ ...addrForm, addressLine1: e.target.value })} /></Field></div>
+              <div className="sm:col-span-2"><Field label="Endere?o"><input className="input-field" required value={addrForm.addressLine1} onChange={(e) => setAddrForm({ ...addrForm, addressLine1: e.target.value })} /></Field></div>
               <Field label="Complemento"><input className="input-field" value={addrForm.addressLine2} onChange={(e) => setAddrForm({ ...addrForm, addressLine2: e.target.value })} /></Field>
               <Field label="Bairro"><input className="input-field" required value={addrForm.district} onChange={(e) => setAddrForm({ ...addrForm, district: e.target.value })} /></Field>
               <Field label="Cidade"><input className="input-field" required value={addrForm.city} onChange={(e) => setAddrForm({ ...addrForm, city: e.target.value })} /></Field>
               <Field label="UF"><input className="input-field uppercase" required maxLength={2} value={addrForm.state} onChange={(e) => setAddrForm({ ...addrForm, state: e.target.value })} /></Field>
-              <label className="flex items-center gap-2 text-sm text-slate-300 sm:col-span-2"><input type="checkbox" checked={addrForm.isDefault} onChange={(e) => setAddrForm({ ...addrForm, isDefault: e.target.checked })} className="accent-[#8b5cf6]" /> Definir como padrão</label>
-              {addrMsg && <p className="text-xs text-slate-300 sm:col-span-2">{addrMsg}</p>}
-              <button className="btn-primary sm:col-span-2"><Plus size={16} /> Adicionar endereço</button>
+              <label className="flex items-center gap-2 text-sm text-sub sm:col-span-2"><input type="checkbox" checked={addrForm.isDefault} onChange={(e) => setAddrForm({ ...addrForm, isDefault: e.target.checked })} className="accent-[#8b5cf6]" /> Definir como padr?o</label>
+              {addrMsg && <p className="text-xs text-sub sm:col-span-2">{addrMsg}</p>}
+              <button className="btn-primary sm:col-span-2"><Plus size={16} /> Adicionar endere?o</button>
             </form>
 
             <div className="space-y-3">
-              {loadingAddr ? <div className="text-sm text-muted"><Loader2 className="inline animate-spin" size={14} /> Carregando...</div> : null}
-              {!loadingAddr && addresses.length === 0 && <p className="text-sm text-muted">Nenhum endereço salvo.</p>}
+              {loadingAddr ?<div className="text-sm text-muted"><Loader2 className="inline animate-spin" size={14} /> Carregando...</div> : null}
+              {!loadingAddr && addresses.length === 0 && <p className="text-sm text-muted">Nenhum endere?o salvo.</p>}
               {addresses.map((a) => (
                 <div key={a.id} className="rounded-xl border border-line bg-carbon/40 p-4 text-sm">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="font-medium text-[#D7EBDD]">{a.label || a.recipientName} {a.isDefault && <span className="ml-2 text-[10px] text-electric-light">PADRÃO</span>}</p>
+                      <p className="font-medium text-base">{a.label || a.recipientName} {a.isDefault && <span className="ml-2 text-[10px] text-electric-light">PADR?O</span>}</p>
                       <p className="text-muted">{a.addressLine1}{a.addressLine2 ? `, ${a.addressLine2}` : ''}</p>
                       <p className="text-muted">{a.district}, {a.city}/{a.state} - {a.postalCode}</p>
                     </div>
@@ -145,3 +145,4 @@ function KeyRoundIcon() {
 }
 
 export default AccountPage;
+

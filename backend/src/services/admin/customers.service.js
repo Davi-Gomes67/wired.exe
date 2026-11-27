@@ -4,7 +4,7 @@ const { HttpError } = require('../../utils/http-error');
 const listCustomers = async (query) => {
   const page = Math.max(1, Number(query.page) || 1);
   const pageSize = Math.min(50, Math.max(1, Number(query.pageSize) || 20));
-  const q = typeof query.q === 'string' ? query.q.trim() : '';
+  const q = typeof query.q === 'string' ?query.q.trim() : '';
   const where = { role: 'CUSTOMER' };
   if (q) where.OR = [{ name: { contains: q } }, { email: { contains: q.toLowerCase() } }];
   const [total, items] = await Promise.all([
@@ -19,15 +19,16 @@ const getCustomer = async (id) => {
     where: { id },
     select: { id: true, name: true, email: true, phone: true, role: true, active: true, createdAt: true, addresses: { orderBy: [{ isDefault: 'desc' }, { createdAt: 'desc' }] }, orders: { orderBy: { createdAt: 'desc' }, include: { items: true } } },
   });
-  if (!user || user.role !== 'CUSTOMER') throw new HttpError(404, 'Cliente nÃ£o encontrado.');
+  if (!user || user.role !== 'CUSTOMER') throw new HttpError(404, 'Cliente não encontrado.');
   return user;
 };
 
 const updateCustomerStatus = async (id, active) => {
   const user = await prisma.user.findUnique({ where: { id }, select: { id: true, role: true } });
-  if (!user || user.role !== 'CUSTOMER') throw new HttpError(404, 'Cliente nÃ£o encontrado.');
+  if (!user || user.role !== 'CUSTOMER') throw new HttpError(404, 'Cliente não encontrado.');
   return prisma.user.update({ where: { id }, data: { active }, select: { id: true, name: true, email: true, phone: true, active: true, createdAt: true } });
 };
 
 module.exports = { listCustomers, getCustomer, updateCustomerStatus };
+
 

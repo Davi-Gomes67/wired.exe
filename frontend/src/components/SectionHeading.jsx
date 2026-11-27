@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 
 export default function SectionHeading({ eyebrow, title, description, action }) {
   return (
@@ -17,9 +17,10 @@ export function SectionAction({ to, children }) {
   return (
     <Link
       to={to}
-      className="inline-flex min-h-10 shrink-0 items-center gap-1.5 self-start text-sm font-medium text-electric-light transition hover:text-[#D7EBDD]"
+      className="inline-flex min-h-10 shrink-0 items-center gap-1.5 self-start text-sm font-medium text-electric-light transition hover:text-base"
     >
       {children}
     </Link>
   );
 }
+

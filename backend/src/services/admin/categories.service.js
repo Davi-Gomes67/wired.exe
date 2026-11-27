@@ -8,22 +8,23 @@ const listCategories = async () => {
 
 const createCategory = async (data) => {
   try { return await prisma.category.create({ data }); }
-  catch (e) { if (e.code === 'P2002') throw new HttpError(409, 'Categoria ou slug jÃ¡ existe.'); throw e; }
+  catch (e) { if (e.code === 'P2002') throw new HttpError(409, 'Categoria ou slug já existe.'); throw e; }
 };
 
 const updateCategory = async (id, data) => {
   const existing = await prisma.category.findUnique({ where: { id }, select: { id: true } });
-  if (!existing) throw new HttpError(404, 'Categoria nÃ£o encontrada.');
+  if (!existing) throw new HttpError(404, 'Categoria não encontrada.');
   try { return await prisma.category.update({ where: { id }, data }); }
-  catch (e) { if (e.code === 'P2002') throw new HttpError(409, 'Categoria ou slug jÃ¡ existe.'); throw e; }
+  catch (e) { if (e.code === 'P2002') throw new HttpError(409, 'Categoria ou slug já existe.'); throw e; }
 };
 
 const deleteCategory = async (id) => {
   const existing = await prisma.category.findUnique({ where: { id }, include: { _count: { select: { products: true } } } });
-  if (!existing) throw new HttpError(404, 'Categoria nÃ£o encontrada.');
+  if (!existing) throw new HttpError(404, 'Categoria não encontrada.');
   if (existing._count.products > 0) throw new HttpError(409, 'Categoria possui produtos vinculados.');
   await prisma.category.delete({ where: { id } });
 };
 
 module.exports = { listCategories, createCategory, updateCategory, deleteCategory };
+
 

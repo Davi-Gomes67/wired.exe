@@ -1,10 +1,11 @@
-import { Home, LayoutGrid, ShoppingCart } from 'lucide-react';
+﻿import { Home, LayoutGrid, MessagesSquare, ShoppingCart } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 const links = [
   { to: '/', label: 'Início', icon: Home },
   { to: '/catalogo', label: 'Catálogo', icon: LayoutGrid },
+  { to: '/community', label: 'Community', icon: MessagesSquare },
   { to: '/carrinho', label: 'Carrinho', icon: ShoppingCart },
 ];
 
@@ -13,7 +14,7 @@ function MobileNav() {
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-carbon/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden">
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-4">
         {links.map(({ to, label, icon: Icon }) => (
           <NavLink
             key={to}
@@ -21,14 +22,14 @@ function MobileNav() {
             end={to === '/'}
             className={({ isActive }) =>
               `relative flex min-h-16 flex-col items-center justify-center gap-1 text-[11px] font-medium transition ${
-                isActive ? 'text-electric-light' : 'text-muted'
+                isActive ?'text-electric dark:text-electric-light' : 'text-muted'
               }`
             }
           >
             <Icon size={21} strokeWidth={1.8} />
             <span>{label}</span>
             {to === '/carrinho' && totalItems > 0 && (
-              <span className="absolute right-[28%] top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-electric px-1 text-[10px] font-bold text-[#D7EBDD]">
+              <span className="absolute right-[22%] top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-electric px-1 text-[10px] font-bold text-void">
                 {totalItems}
               </span>
             )}
@@ -40,3 +41,4 @@ function MobileNav() {
 }
 
 export default MobileNav;
+

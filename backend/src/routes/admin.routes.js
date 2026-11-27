@@ -1,8 +1,10 @@
 const { Router } = require('express');
 const { requireAuth, requireAdmin } = require('../middlewares/auth.middleware');
-const { upload, validateUploadedImages } = require('../middlewares/upload.middleware');
-const { validateCategoryBody, validateProductBody, validateStockBody, validateOrderStatusBody, validateCustomerStatusBody } = require('../middlewares/validate-admin.middleware');
+const { upload, journalUpload, validateUploadedImages } = require('../middlewares/upload.middleware');
+const { validateCategoryBody, validateProductBody, validateStockBody, validateOrderStatusBody, validateCustomerStatusBody, validateArticleBody, validateArticleStatusBody } = require('../middlewares/validate-admin.middleware');
+const { validateModerationPostBody, validateModerationCommentBody, validateReportStatusBody } = require('../middlewares/validate-community.middleware');
 const admin = require('../controllers/admin.controller');
+const community = require('../controllers/admin/community.controller');
 
 const router = Router();
 router.use(requireAuth, requireAdmin);
@@ -39,5 +41,23 @@ router.get('/media', admin.listMedia);
 
 router.get('/settings', admin.getSettings);
 router.put('/settings', admin.updateSettings);
+
+router.get('/root-access/subscriptions', admin.listRootAccessSubscriptions);
+router.patch('/root-access/subscriptions/:id/status', admin.updateRootAccessStatus);
+
+router.get('/journal', admin.listJournalArticles);
+router.get('/journal/:id', admin.getJournalArticle);
+router.post('/journal', validateArticleBody(false), admin.createJournalArticle);
+router.put('/journal/:id', validateArticleBody(true), admin.updateJournalArticle);
+router.delete('/journal/:id', admin.deleteJournalArticle);
+router.patch('/journal/:id/status', validateArticleStatusBody, admin.updateJournalArticleStatus);
+router.post('/journal/:id/cover', journalUpload.single('cover'), validateUploadedImages, admin.uploadJournalCover);
+
+router.get('/community/posts', community.listPosts);
+router.patch('/community/posts/:id/status', validateModerationPostBody, community.updatePostStatus);
+router.get('/community/comments', community.listComments);
+router.patch('/community/comments/:id/status', validateModerationCommentBody, community.updateCommentStatus);
+router.get('/community/reports', community.listReports);
+router.patch('/community/reports/:id', validateReportStatusBody, community.updateReport);
 
 module.exports = router;

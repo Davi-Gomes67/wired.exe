@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { requireAuth } = require('../middlewares/auth.middleware');
+const { avatarUpload, validateUploadedImages } = require('../middlewares/upload.middleware');
 const {
   validateRegisterBody, validateLoginBody, validateProfileBody, validatePasswordChangeBody,
   validateForgotPasswordBody, validateResetPasswordBody,
@@ -14,6 +15,7 @@ router.post('/forgot-password', validateForgotPasswordBody, auth.forgotPassword)
 router.post('/reset-password', validateResetPasswordBody, auth.resetPassword);
 router.get('/me', requireAuth, auth.me);
 router.patch('/me', requireAuth, validateProfileBody, auth.updateProfile);
+router.post('/me/avatar', requireAuth, avatarUpload.single('avatar'), validateUploadedImages, auth.uploadAvatar);
 router.patch('/me/password', requireAuth, validatePasswordChangeBody, auth.changePassword);
 
 module.exports = router;

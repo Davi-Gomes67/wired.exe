@@ -1,19 +1,21 @@
-const prisma = require('../config/prisma');
+﻿const prisma = require('../config/prisma');
 const { HttpError } = require('../utils/http-error');
 
 const ORDER_STATUSES = new Set(['PENDING', 'CONFIRMED', 'SHIPPED', 'DELIVERED', 'CANCELLED']);
 const PAYMENT_STATUSES = new Set(['NOT_PROCESSED', 'PAID', 'REFUNDED', 'FAILED']);
 const ROLES = new Set(['CUSTOMER', 'ADMIN']);
+const ARTICLE_STATUSES = new Set(['DRAFT', 'PUBLISHED', 'ARCHIVED']);
+const JOURNAL_CATEGORIES = new Set(['HARDWARE', 'SOFTWARE', 'RETRO_COMPUTING', 'DIGITAL_CULTURE', 'DIY_PROJECTS', 'GEEK_CULTURE']);
 
 const readInt = (value, field) => {
   const n = Number(value);
-  if (!Number.isInteger(n) || n <= 0) throw new HttpError(400, `${field} inválido.`);
+  if (!Number.isInteger(n) || n <= 0) throw new HttpError(400, `${field} inv?lido.`);
   return n;
 };
 
 const readString = (value, field, min, max, optional = false) => {
   if ((value === undefined || value === null || value === '') && optional) return null;
-  if (typeof value !== 'string') throw new HttpError(400, `O campo ${field} deve ser texto.`);
+  if (typeof value !== 'string') throw new HttpError(400, `O campo ${field} deve ser um texto.`);
   const t = value.trim();
   if (!t && optional) return null;
   if (t.length < min || t.length > max) throw new HttpError(400, `O campo ${field} deve ter entre ${min} e ${max} caracteres.`);
@@ -22,7 +24,7 @@ const readString = (value, field, min, max, optional = false) => {
 
 const readSlug = (value, field = 'slug') => {
   const slug = readString(value, field, 2, 140).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-  if (!slug) throw new HttpError(400, 'Slug inválido.');
+  if (!slug) throw new HttpError(400, 'Slug inv?lido.');
   return slug;
 };
 
@@ -37,13 +39,13 @@ const readBool = (value, field, fallback = undefined) => {
 const readMoneyCents = (value, field, optional = false) => {
   if ((value === undefined || value === null || value === '') && optional) return null;
   const n = Number(value);
-  if (!Number.isInteger(n) || n < 0) throw new HttpError(400, `O campo ${field} deve ser inteiro >= 0.`);
+  if (!Number.isInteger(n) || n < 0) throw new HttpError(400, `O campo ${field} deve ser um número inteiro maior ou igual a zero.`);
   return n;
 };
 
 const readStock = (value, field = 'stock') => {
   const n = Number(value);
-  if (!Number.isInteger(n) || n < 0 || n > 999999) throw new HttpError(400, 'Estoque inválido.');
+  if (!Number.isInteger(n) || n < 0 || n > 999999) throw new HttpError(400, 'Estoque inv?lido.');
   return n;
 };
 
@@ -89,7 +91,7 @@ const validateProductBody = (partial = false) => (req, _res, next) => {
       }));
     }
     if (!partial) {
-      for (const k of ['name','slug','description','categoryId','priceCents','stock']) if (data[k] === undefined) throw new HttpError(400, `Campo ${k} é obrigatório.`);
+      for (const k of ['name','slug','description','categoryId','priceCents','stock']) if (data[k] === undefined) throw new HttpError(400, `Campo ${k} ? obrigat?rio.`);
     }
     if (partial && Object.keys(data).length === 0) throw new HttpError(400, 'Nenhum campo para atualizar.');
     req.validatedProduct = data;
@@ -107,12 +109,12 @@ const validateOrderStatusBody = (req, _res, next) => {
     const data = {};
     if (b.status !== undefined) {
       const status = readString(b.status, 'status', 2, 30).toUpperCase();
-      if (!ORDER_STATUSES.has(status)) throw new HttpError(400, 'Status de pedido inválido.');
+      if (!ORDER_STATUSES.has(status)) throw new HttpError(400, 'Status de pedido inv?lido.');
       data.status = status;
     }
     if (b.paymentStatus !== undefined) {
       const ps = readString(b.paymentStatus, 'paymentStatus', 2, 30).toUpperCase();
-      if (!PAYMENT_STATUSES.has(ps)) throw new HttpError(400, 'Status de pagamento inválido.');
+      if (!PAYMENT_STATUSES.has(ps)) throw new HttpError(400, 'Status de pagamento inv?lido.');
       data.paymentStatus = ps;
     }
     if (!Object.keys(data).length) throw new HttpError(400, 'Informe status ou paymentStatus.');
@@ -124,10 +126,123 @@ const validateOrderStatusBody = (req, _res, next) => {
 const validateCustomerStatusBody = (req, _res, next) => {
   try {
     const active = readBool(req.body?.active, 'active');
-    if (active === undefined) throw new HttpError(400, 'Campo active é obrigatório.');
+    if (active === undefined) throw new HttpError(400, 'Campo active ? obrigat?rio.');
     req.validatedCustomerStatus = { active };
     next();
   } catch (e) { next(e); }
 };
 
-module.exports = { validateCategoryBody, validateProductBody, validateStockBody, validateOrderStatusBody, validateCustomerStatusBody, ORDER_STATUSES, PAYMENT_STATUSES, ROLES };
+const ALLOWED_BLOCK_TYPES = new Set(['heading', 'subheading', 'paragraph', 'list', 'quote', 'code', 'image', 'divider', 'link']);
+const ALLOWED_LIST_TYPES = new Set(['ordered', 'unordered']);
+const isSafeUrl = (v) => typeof v === 'string' && /^(https?:\/\/|\/uploads\/journal\/|\/)/i.test(v.trim());
+const estimateReadingMinutes = (blocks) => {
+  const text = blocks.map((b) => [b.text, ...(Array.isArray(b.items) ? b.items : [])].filter(Boolean).join(' ')).join(' ');
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 220));
+};
+
+const validateArticleBlocks = (value) => {
+  if (!Array.isArray(value)) throw new HttpError(400, 'content deve ser um array de blocos.');
+  if (value.length > 120) throw new HttpError(400, 'content excede o limite de blocos.');
+  return value.map((raw, index) => {
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new HttpError(400, `Bloco ${index + 1} inv?lido.`);
+    const type = readString(raw.type, `content[${index}].type`, 2, 30).toLowerCase();
+    if (!ALLOWED_BLOCK_TYPES.has(type)) throw new HttpError(400, `Tipo de bloco inv?lido: ${type}.`);
+    const block = { type };
+    if (type === 'divider') return block;
+    if (type === 'list') {
+      if (!Array.isArray(raw.items) || !raw.items.length) throw new HttpError(400, `Lista do bloco ${index + 1} inv?lida.`);
+      block.items = raw.items.slice(0, 30).map((item, i) => readString(item, `content[${index}].items[${i}]`, 1, 300));
+      block.ordered = raw.ordered === true || raw.listType === 'ordered';
+      if (raw.listType !== undefined) {
+        const lt = readString(raw.listType, `content[${index}].listType`, 3, 20).toLowerCase();
+        if (!ALLOWED_LIST_TYPES.has(lt)) throw new HttpError(400, 'listType inv?lido.');
+        block.ordered = lt === 'ordered';
+      }
+      return block;
+    }
+    if (type === 'image') {
+      const url = readString(raw.url, `content[${index}].url`, 1, 500);
+      if (!isSafeUrl(url)) throw new HttpError(400, 'URL de imagem inv?lida.');
+      block.url = url;
+      block.alt = readString(raw.alt, `content[${index}].alt`, 0, 160, true);
+      block.caption = readString(raw.caption, `content[${index}].caption`, 0, 240, true);
+      return block;
+    }
+    if (type === 'link') {
+      block.text = readString(raw.text, `content[${index}].text`, 1, 240);
+      const href = readString(raw.href || raw.url, `content[${index}].href`, 1, 500);
+      if (!isSafeUrl(href)) throw new HttpError(400, 'URL de link inv?lida.');
+      block.href = href;
+      return block;
+    }
+    block.text = readString(raw.text, `content[${index}].text`, 1, type === 'code' ?6000 : 4000);
+    if (type === 'quote') block.cite = readString(raw.cite, `content[${index}].cite`, 0, 160, true);
+    return block;
+  });
+};
+
+const validateArticleBody = (partial = false) => (req, _res, next) => {
+  try {
+    const b = req.body || {};
+    const has = (k) => b[k] !== undefined;
+    const data = {};
+    if (!partial || has('title')) data.title = readString(b.title, 'title', 3, 160);
+    if (!partial || has('slug')) data.slug = b.slug ? readSlug(b.slug) : (data.title ? readSlug(data.title) : undefined);
+    if (has('subtitle') || !partial) data.subtitle = readString(b.subtitle, 'subtitle', 0, 240, true);
+    if (!partial || has('excerpt')) data.excerpt = readString(b.excerpt, 'excerpt', 10, 400);
+    if (!partial || has('category')) {
+      const category = readString(b.category, 'category', 2, 40).toUpperCase().replace(/[\s-]+/g, '_');
+      if (!JOURNAL_CATEGORIES.has(category)) throw new HttpError(400, 'Categoria editorial inv?lida.');
+      data.category = category;
+    }
+    if (!partial || has('authorName')) data.authorName = readString(b.authorName, 'authorName', 2, 120);
+    if (has('coverImageUrl') || !partial) {
+      const cover = readString(b.coverImageUrl, 'coverImageUrl', 0, 500, true);
+      if (cover && !isSafeUrl(cover)) throw new HttpError(400, 'coverImageUrl inv?lida.');
+      data.coverImageUrl = cover;
+    }
+    if (!partial || has('content')) {
+      const blocks = validateArticleBlocks(b.content ?? []);
+      data.content = JSON.stringify(blocks);
+      data.readingTimeMinutes = estimateReadingMinutes(blocks);
+    }
+    if (has('status') || !partial) {
+      const status = readString(b.status ?? 'DRAFT', 'status', 3, 20).toUpperCase();
+      if (!ARTICLE_STATUSES.has(status)) throw new HttpError(400, 'Status de artigo inv?lido.');
+      data.status = status;
+    }
+    if (has('featured') || !partial) data.featured = readBool(b.featured, 'featured', false);
+    if (has('publishedAt')) {
+      if (b.publishedAt === null || b.publishedAt === '') data.publishedAt = null;
+      else {
+        const d = new Date(b.publishedAt);
+        if (Number.isNaN(d.getTime())) throw new HttpError(400, 'publishedAt inv?lido.');
+        data.publishedAt = d;
+      }
+    }
+    if (has('relatedProductIds')) {
+      if (!Array.isArray(b.relatedProductIds)) throw new HttpError(400, 'relatedProductIds deve ser array.');
+      const ids = [...new Set(b.relatedProductIds.map((id) => Number(id)).filter((id) => Number.isInteger(id) && id > 0))].slice(0, 8);
+      data.relatedProductIds = ids;
+    }
+    if (!partial) {
+      for (const k of ['title','slug','excerpt','category','authorName','content','status']) if (data[k] === undefined) throw new HttpError(400, `Campo ${k} ? obrigat?rio.`);
+    }
+    if (partial && Object.keys(data).length === 0) throw new HttpError(400, 'Nenhum campo para atualizar.');
+    req.validatedArticle = data;
+    next();
+  } catch (e) { next(e); }
+};
+
+const validateArticleStatusBody = (req, _res, next) => {
+  try {
+    const status = readString(req.body?.status, 'status', 3, 20).toUpperCase();
+    if (!ARTICLE_STATUSES.has(status)) throw new HttpError(400, 'Status de artigo inv?lido.');
+    req.validatedArticleStatus = { status };
+    next();
+  } catch (e) { next(e); }
+};
+
+module.exports = { validateCategoryBody, validateProductBody, validateStockBody, validateOrderStatusBody, validateCustomerStatusBody, validateArticleBody, validateArticleStatusBody, ORDER_STATUSES, PAYMENT_STATUSES, ROLES, ARTICLE_STATUSES, JOURNAL_CATEGORIES };
+

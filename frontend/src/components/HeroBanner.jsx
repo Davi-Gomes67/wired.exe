@@ -1,4 +1,4 @@
-import { ArrowRight, Terminal } from 'lucide-react';
+﻿import { ArrowRight, Terminal } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { formatPrice } from '../utils/format';
 
@@ -15,9 +15,9 @@ export default function HeroBanner({ product }) {
         <div className="max-w-2xl animate-fade-up">
           <p className="eyebrow mb-4 inline-flex items-center gap-2 rounded-full border border-electric/25 bg-electric/10 px-3 py-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-cyber" aria-hidden="true" />
-            TECHNOLOGY • GEEK CULTURE • ELECTRONICS
+            TECHNOLOGY â€¢ GEEK CULTURE â€¢ ELECTRONICS
           </p>
-          <h1 className="font-display text-4xl font-extrabold leading-[0.98] tracking-tight text-[#D7EBDD] sm:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className="font-display text-4xl font-extrabold leading-[0.98] tracking-tight text-base sm:text-5xl lg:text-6xl xl:text-7xl">
             The internet
             <span className="block bg-gradient-to-r from-electric-light via-electric to-cyber bg-clip-text text-transparent">
               is part of
@@ -25,7 +25,7 @@ export default function HeroBanner({ product }) {
             reality.
           </h1>
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
-            Hardware for your projects. Culture for your identity. Um catálogo tecnológico e espaço de cultura geek — da bancada ao setup, do retro ao digital.
+            Hardware for your projects. Culture for your identity. Um cat?logo tecnol?gico e espa?o de cultura geek â€” da bancada ao setup, do retro ao digital.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link to="/catalogo" className="btn-primary">
@@ -51,10 +51,10 @@ export default function HeroBanner({ product }) {
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
                   <Terminal size={13} className="text-electric" aria-hidden="true" />
-                  {spotlight ? 'WIRED SPOTLIGHT' : 'SYSTEM UPGRADE'}
+                  {spotlight ?'WIRED SPOTLIGHT' : 'SYSTEM UPGRADE'}
                 </span>
                 <span className="rounded-full border border-electric/30 bg-electric/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-electric-light">
-                  {spotlight ? 'Digital Culture' : product?.featured ? 'Em destaque' : 'Catálogo'}
+                  {spotlight ?'Digital Culture' : product?.featured ?'Em destaque' : 'Cat?logo'}
                 </span>
               </div>
 
@@ -64,7 +64,7 @@ export default function HeroBanner({ product }) {
                     <span>lain://figure</span>
                     <span className="text-electric/80">online</span>
                   </div>
-                  {product?.imageUrl ? (
+                  {product?.imageUrl ?(
                     <img
                       src={product.imageUrl}
                       alt={product.name}
@@ -78,18 +78,18 @@ export default function HeroBanner({ product }) {
 
                 <div className="pb-1">
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-electric/90">
-                    {spotlight ? 'Serial Experiments Lain' : (product?.brand || 'WIRED.exe')}
+                    {spotlight ?'Serial Experiments Lain' : (product?.brand || 'WIRED.exe')}
                   </p>
-                  <h2 className="mt-2 font-display text-2xl font-bold leading-tight tracking-tight text-[#D7EBDD] sm:text-3xl">
+                  <h2 className="mt-2 font-display text-2xl font-bold leading-tight tracking-tight text-base sm:text-3xl">
                     {product?.name || 'Carregando produto...'}
                   </h2>
                   <p className="mt-3 text-sm leading-relaxed text-muted">
                     {spotlight
-                      ? 'Uma peça de coleção para quem atravessa a fronteira entre rede, identidade e cultura digital. Presença underground, nostalgia wired e a aura inquieta de Lain.'
-                      : 'Produto selecionado do catálogo WIRED.exe, com identidade tech e curadoria geek.'}
+                      ?'Uma pe?a de cole?o para quem atravessa a fronteira entre rede, identidade e cultura digital. Presen?a underground, nostalgia wired e a aura inquieta de Lain.'
+                      : 'Produto selecionado do cat?logo WIRED.exe, com identidade tech e curadoria geek.'}
                   </p>
                   {product && (
-                    <p className="mt-5 font-mono text-2xl font-semibold tracking-tight text-[#D7EBDD]">
+                    <p className="mt-5 font-mono text-2xl font-semibold tracking-tight text-base">
                       {formatPrice(product.priceCents)}
                     </p>
                   )}
@@ -107,3 +107,4 @@ export default function HeroBanner({ product }) {
     </section>
   );
 }
+

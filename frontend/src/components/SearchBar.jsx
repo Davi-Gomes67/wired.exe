@@ -20,8 +20,9 @@ export default function SearchBar({
           onChange={(event) => onChange(event.target.value)}
           placeholder={placeholder}
           aria-label={label}
-          className="input-field pl-10"
+          className="input-field pl-10 pr-16"
         />
+        <span className="pointer-events-none absolute right-2 top-1/2 hidden -translate-y-1/2 rounded-md border border-line bg-panel/70 px-2 py-0.5 font-mono text-[10px] text-muted sm:inline">ENTER</span>
       </div>
     </form>
   );

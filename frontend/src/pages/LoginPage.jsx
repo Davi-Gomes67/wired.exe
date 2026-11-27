@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Loader2, LogIn } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -7,7 +7,7 @@ import { getErrorMessage } from '../services/api';
 function Field({ label, error, children }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-sm font-medium text-slate-300">{label}</span>
+      <span className="mb-2 block text-sm font-medium text-sub">{label}</span>
       {children}
       {error && <span className="mt-1.5 block text-xs text-red-300">{error}</span>}
     </label>
@@ -56,14 +56,14 @@ function LoginPage() {
           </Field>
           {error && <p className="text-sm text-red-300">{error}</p>}
           <button type="submit" disabled={submitting} className="btn-primary w-full">
-            {submitting ? <Loader2 size={16} className="animate-spin" /> : <LogIn size={16} />}
-            {submitting ? 'Entrando...' : 'Entrar'}
+            {submitting ?<Loader2 size={16} className="animate-spin" /> : <LogIn size={16} />}
+            {submitting ?'Entrando...' : 'Entrar'}
           </button>
         </form>
 
         <div className="mt-5 flex flex-col gap-2 text-sm text-muted">
           <Link to="/recuperar-senha" className="text-electric-light hover:underline">Esqueci minha senha</Link>
-          <p>Não tem conta? <Link to="/cadastro" state={{ from: location.state?.from }} className="text-electric-light hover:underline">Cadastre-se</Link></p>
+          <p>N?o tem conta?<Link to="/cadastro" state={{ from: location.state?.from }} className="text-electric-light hover:underline">Cadastre-se</Link></p>
         </div>
       </div>
     </div>
@@ -71,3 +71,4 @@ function LoginPage() {
 }
 
 export default LoginPage;
+

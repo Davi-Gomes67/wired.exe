@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { Save } from 'lucide-react';
 import { adminService, getErrorMessage } from '../../services/api';
 
@@ -15,7 +15,7 @@ function AdminStockPage() {
     const raw = draft[id];
     if (raw === '' || raw === null || raw === undefined) return setError('Informe o estoque.');
     const stock = Number(raw);
-    if (!Number.isInteger(stock) || stock < 0) return setError('Estoque inválido.');
+    if (!Number.isInteger(stock) || stock < 0) return setError('Estoque inv?lido.');
     try { await adminService.products.updateStock(id, stock); load(); } catch (e) { setError(getErrorMessage(e)); }
   };
 
@@ -29,8 +29,8 @@ function AdminStockPage() {
           <tbody>
             {items.map((p) => (
               <tr key={p.id} className="border-b border-line/50">
-                <td className="p-3 text-[#D7EBDD]">{p.name}</td>
-                <td className="p-3"><span className={p.stock <= 5 ? 'text-amber-300' : 'text-slate-300'}>{p.stock}</span></td>
+                <td className="p-3 text-base">{p.name}</td>
+                <td className="p-3"><span className={p.stock <= 5 ?'text-amber-300' : 'text-sub'}>{p.stock}</span></td>
                 <td className="p-3"><input className="input-field h-9 w-28" type="number" min="0" max="999999" value={draft[p.id] ?? p.stock} onChange={(e)=>setDraft({...draft,[p.id]:e.target.value})} /></td>
                 <td className="p-3"><button className="btn-subtle h-9 px-3" onClick={()=>save(p.id)}><Save size={14}/> Salvar</button></td>
               </tr>
@@ -43,3 +43,4 @@ function AdminStockPage() {
 }
 
 export default AdminStockPage;
+

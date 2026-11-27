@@ -29,7 +29,7 @@ const getDashboard = async (query = {}) => {
   else { since.setDate(since.getDate() - (cfg.days - 1)); since.setHours(0,0,0,0); }
 
   const activeWhere = { archived: false };
-  const [ordersAgg, ordersCount, customersCount, productsCount, activeProducts, lowStockRows, lowStockCount, noImageCount, noDescriptionCount, featuredCount, totalCategories, totalImages, pendingOrders, recentOrders, statusGroups, products, categories, featuredProducts, recentProducts, registrationProducts, recentActivities] = await Promise.all([
+  const [ordersAgg, ordersCount, customersCount, productsCount, activeProducts, lowStockRows, lowStockCount, noImageCount, noDescriptionCount, featuredCount, totalCategories, totalImages, pendingOrders, recentOrders, statusGroups, products, categories, featuredProducts, recentProducts, registrationProducts, recentActivities, communityPostsCount, communityCommentsCount, communityReportsOpen, recentCommunityPosts] = await Promise.all([
     prisma.order.aggregate({ _sum: { totalCents: true } }),
     prisma.order.count(),
     prisma.user.count({ where: { role: 'CUSTOMER' } }),
@@ -51,10 +51,14 @@ const getDashboard = async (query = {}) => {
     prisma.product.findMany({ where: activeWhere, orderBy: { createdAt: 'desc' }, take: 5, select: { id: true, name: true, slug: true, createdAt: true, category: { select: { name: true } } } }),
     prisma.product.findMany({ where: { ...activeWhere, createdAt: { gte: since } }, select: { createdAt: true } }),
     listActivities(12).catch(() => []),
+    prisma.communityPost.count().catch(() => 0),
+    prisma.communityComment.count().catch(() => 0),
+    prisma.communityReport.count({ where: { status: 'OPEN' } }).catch(() => 0),
+    prisma.communityPost.findMany({ orderBy: { createdAt: 'desc' }, take: 5, select: { id: true, title: true, slug: true, status: true, createdAt: true, author: { select: { username: true, displayName: true, name: true } } } }).catch(() => []),
   ]);
 
   const totalRevenueCents = ordersAgg._sum.totalCents || 0;
-  const averageTicketCents = ordersCount ? Math.round(totalRevenueCents / ordersCount) : 0;
+  const averageTicketCents = ordersCount ?Math.round(totalRevenueCents / ordersCount) : 0;
 
   const salesSince = new Date(now); salesSince.setDate(salesSince.getDate() - 6); salesSince.setHours(0,0,0,0);
   const recentSales = await prisma.order.findMany({ where: { createdAt: { gte: salesSince } }, select: { createdAt: true, totalCents: true } });
@@ -68,7 +72,7 @@ const getDashboard = async (query = {}) => {
   } else {
     for (let i = 0; i < cfg.days; i += 1) { const d = new Date(since); d.setDate(since.getDate() + i); regBuckets.set(toDateKey(d), { label: toDateKey(d), count: 0 }); }
   }
-  for (const p of registrationProducts) { const k = cfg.bucket === 'month' ? toMonthKey(p.createdAt) : toDateKey(p.createdAt); if (regBuckets.has(k)) regBuckets.get(k).count += 1; }
+  for (const p of registrationProducts) { const k = cfg.bucket === 'month' ?toMonthKey(p.createdAt) : toDateKey(p.createdAt); if (regBuckets.has(k)) regBuckets.get(k).count += 1; }
   const productRegistration = Array.from(regBuckets.values());
   const registrationTotal = productRegistration.reduce((s, b) => s + b.count, 0);
 
@@ -110,7 +114,8 @@ const getDashboard = async (query = {}) => {
     recentOrders,
     recentProducts,
     recentActivities,
-    systemHealth: { api: 'ok', database: dbOk ? 'ok' : 'error', productsLoaded: productsCount, media: { totalImages, orphanFiles: orphanFilesCount, missingImageFiles }, recentErrors: recentActivities.filter(a => a.action === 'ERROR').length, recentErrorsCollected: recentActivities.some(a => a.action === 'ERROR') },
+    community: { postsCount: communityPostsCount, commentsCount: communityCommentsCount, openReports: communityReportsOpen, recentPosts: recentCommunityPosts },
+    systemHealth: { api: 'ok', database: dbOk ?'ok' : 'error', productsLoaded: productsCount, media: { totalImages, orphanFiles: orphanFilesCount, missingImageFiles }, recentErrors: recentActivities.filter(a => a.action === 'ERROR').length, recentErrorsCollected: recentActivities.some(a => a.action === 'ERROR') },
   };
 };
 

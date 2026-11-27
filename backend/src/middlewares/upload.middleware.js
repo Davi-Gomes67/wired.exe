@@ -4,18 +4,16 @@ const multer = require('multer');
 const { HttpError } = require('../utils/http-error');
 
 const UPLOAD_DIR = path.resolve(__dirname, '../../../uploads/products');
+const AVATAR_DIR = path.resolve(__dirname, '../../../uploads/avatars');
+const JOURNAL_DIR = path.resolve(__dirname, '../../../uploads/journal');
+const COMMUNITY_DIR = path.resolve(__dirname, '../../../uploads/community');
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+fs.mkdirSync(AVATAR_DIR, { recursive: true });
+fs.mkdirSync(JOURNAL_DIR, { recursive: true });
+fs.mkdirSync(COMMUNITY_DIR, { recursive: true });
 
 const ALLOWED = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
 const EXT_BY_MIME = { 'image/jpeg': '.jpg', 'image/png': '.png', 'image/webp': '.webp', 'image/gif': '.gif' };
-
-const storage = multer.diskStorage({
-  destination: (_req, _file, cb) => cb(null, UPLOAD_DIR),
-  filename: (_req, file, cb) => {
-    const ext = EXT_BY_MIME[file.mimetype] || '.jpg';
-    cb(null, `product-${Date.now()}-${Math.random().toString(16).slice(2)}${ext}`);
-  },
-});
 
 const hasAllowedSignature = (filePath, mime) => {
   const fd = fs.openSync(filePath, 'r');
@@ -33,25 +31,40 @@ const hasAllowedSignature = (filePath, mime) => {
   }
 };
 
-const validateUploadedImages = (req, _res, next) => {
-  const files = req.files || [];
+const createStorage = (dir, prefix) => multer.diskStorage({
+  destination: (_req, _file, cb) => cb(null, dir),
+  filename: (_req, file, cb) => {
+    const ext = EXT_BY_MIME[file.mimetype] || '.jpg';
+    cb(null, `${prefix}-${Date.now()}-${Math.random().toString(16).slice(2)}${ext}`);
+  },
+});
+
+const imageFilter = (_req, file, cb) => {
+  if (!ALLOWED.has(file.mimetype)) return cb(new HttpError(400, 'Tipo de imagem inválido. Use JPG, PNG, WEBP ou GIF.'));
+  cb(null, true);
+};
+
+const validateImageFiles = (files = []) => {
   for (const file of files) {
     const ok = hasAllowedSignature(file.path, file.mimetype);
     if (!ok) {
       for (const f of files) try { fs.unlinkSync(f.path); } catch {}
-      return next(new HttpError(400, 'Arquivo de imagem inválido ou corrompido.'));
+      throw new HttpError(400, 'Arquivo de imagem inválido ou corrompido.');
     }
   }
-  next();
 };
 
-const upload = multer({
-  storage,
-  limits: { fileSize: 5 * 1024 * 1024, files: 5 },
-  fileFilter: (_req, file, cb) => {
-    if (!ALLOWED.has(file.mimetype)) return cb(new HttpError(400, 'Tipo de imagem inválido. Use JPG, PNG, WEBP ou GIF.'));
-    cb(null, true);
-  },
-});
+const validateUploadedImages = (req, _res, next) => {
+  try {
+    const files = req.files || (req.file ?[req.file] : []);
+    validateImageFiles(files);
+    next();
+  } catch (e) { next(e); }
+};
 
-module.exports = { upload, UPLOAD_DIR, validateUploadedImages };
+const upload = multer({ storage: createStorage(UPLOAD_DIR, 'product'), limits: { fileSize: 5 * 1024 * 1024, files: 5 }, fileFilter: imageFilter });
+const avatarUpload = multer({ storage: createStorage(AVATAR_DIR, 'avatar'), limits: { fileSize: 2 * 1024 * 1024, files: 1 }, fileFilter: imageFilter });
+const journalUpload = multer({ storage: createStorage(JOURNAL_DIR, 'journal'), limits: { fileSize: 5 * 1024 * 1024, files: 1 }, fileFilter: imageFilter });
+const communityUpload = multer({ storage: createStorage(COMMUNITY_DIR, 'community'), limits: { fileSize: 5 * 1024 * 1024, files: 6 }, fileFilter: imageFilter });
+
+module.exports = { upload, avatarUpload, journalUpload, communityUpload, UPLOAD_DIR, AVATAR_DIR, JOURNAL_DIR, COMMUNITY_DIR, validateUploadedImages, validateImageFiles };

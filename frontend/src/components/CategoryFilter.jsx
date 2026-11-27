@@ -6,8 +6,8 @@ export default function CategoryFilter({ categories = [], activeSlug = '' }) {
       <div className="flex w-max gap-2">
         <Link
           to="/catalogo"
-          className={`chip ${!activeSlug ? 'chip-active' : ''}`}
-          aria-current={!activeSlug ? 'page' : undefined}
+          className={`chip ${!activeSlug ?'chip-active' : ''}`}
+          aria-current={!activeSlug ?'page' : undefined}
         >
           Todos
         </Link>
@@ -15,8 +15,8 @@ export default function CategoryFilter({ categories = [], activeSlug = '' }) {
           <Link
             key={category.slug}
             to={`/categoria/${category.slug}`}
-            className={`chip ${activeSlug === category.slug ? 'chip-active' : ''}`}
-            aria-current={activeSlug === category.slug ? 'page' : undefined}
+            className={`chip ${activeSlug === category.slug ?'chip-active' : ''}`}
+            aria-current={activeSlug === category.slug ?'page' : undefined}
           >
             {category.name}
             <span className="ml-2 font-mono text-[11px] text-muted">{category.productCount}</span>

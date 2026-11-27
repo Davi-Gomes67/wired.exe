@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 
 const CATEGORY_VISUALS = {
@@ -27,11 +27,12 @@ export default function CategoryShowcase({ categories = [] }) {
             <ArrowUpRight size={15} className="text-muted transition group-hover:text-electric-light" />
           </div>
           <div className="relative mt-4">
-            <p className="text-sm font-semibold leading-snug text-[#D7EBDD]">{category.name}</p>
-            <p className="mt-1 font-mono text-[11px] text-muted">{category.productCount} itens</p>
+            <p className="text-sm font-semibold leading-snug text-base">{category.name}</p>
+            <p className="mt-1 font-mono text-[11px] text-muted">{category.productCount} {category.productCount === 1 ? 'item' : 'itens'}</p>
           </div>
         </Link>
       ))}
     </div>
   );
 }
+

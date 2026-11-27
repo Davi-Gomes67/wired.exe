@@ -74,7 +74,7 @@ WIRED.exe/
 |---|---|---|
 | `VITE_API_URL` | `http://localhost:4000/api` | Base URL da API |
 
-## Execu��o (VS Code)
+## Execu??o (VS Code)
 
 1. Abra a pasta do projeto no VS Code.
 2. Abra o terminal integrado: `Ctrl+'` (ou Terminal > New Terminal).
@@ -92,8 +92,8 @@ Isso sobe API e frontend juntos. Acesse:
 Comandos separados:
 
 ```bash
-npm run dev:api   # s� backend
-npm run dev:web   # s� frontend
+npm run dev:api   # s? backend
+npm run dev:web   # s? frontend
 npm run build     # build frontend
 npm test          # testes backend
 ```

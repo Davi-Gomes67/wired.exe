@@ -23,16 +23,18 @@ app.use(
     allowedHeaders: ['Content-Type', 'Authorization'],
   }),
 );
-app.use(express.json({ limit: '200kb' }));
+app.use(express.json({ limit: '1mb' }));
 app.use('/uploads', express.static(path.resolve(__dirname, '../../uploads'), { dotfiles: 'deny', index: false }));
 
 const apiLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 300, standardHeaders: true, legacyHeaders: false });
 const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 20, standardHeaders: true, legacyHeaders: false, message: { error: { message: 'Muitas tentativas. Tente novamente em alguns minutos.' } } });
+const rootAccessLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 15, standardHeaders: true, legacyHeaders: false, message: { error: { message: 'Muitas solicitações. Tente novamente em alguns minutos.' } } });
 app.use('/api', apiLimiter);
 app.use('/api/auth/login', authLimiter);
 app.use('/api/auth/register', authLimiter);
 app.use('/api/auth/forgot-password', authLimiter);
 app.use('/api/auth/reset-password', authLimiter);
+app.use('/api/root-access/request', rootAccessLimiter);
 
 app.use('/api', routes);
 app.use(notFound);

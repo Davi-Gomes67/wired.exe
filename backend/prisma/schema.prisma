@@ -36,6 +36,10 @@ model Product {
   images         ProductImage[]
   specifications ProductSpecification[]
   orderItems     OrderItem[]
+  wishlistItems  WishlistItem[]
+  recentlyViewedItems RecentlyViewedItem[]
+  relatedArticles ArticleRelatedProduct[]
+  communityPosts  CommunityPostProduct[]
   createdAt      DateTime               @default(now())
   updatedAt      DateTime               @updatedAt
 
@@ -72,18 +76,32 @@ model ProductSpecification {
 }
 
 model User {
-  id           Int                  @id @default(autoincrement())
-  name         String
-  email        String               @unique
-  passwordHash String
-  phone        String?
-  role         String               @default("CUSTOMER")
-  active       Boolean              @default(true)
-  addresses    Address[]
-  orders       Order[]
-  resetTokens  PasswordResetToken[]
-  createdAt    DateTime             @default(now())
-  updatedAt    DateTime             @updatedAt
+  id                      Int                      @id @default(autoincrement())
+  name                    String
+  displayName             String?
+  username                String?                  @unique
+  email                   String                   @unique
+  passwordHash            String
+  phone                   String?
+  avatarUrl               String?
+  publicMemberId          String?                  @unique
+  role                    String                   @default("CUSTOMER")
+  active                  Boolean                  @default(true)
+  addresses               Address[]
+  orders                  Order[]
+  resetTokens             PasswordResetToken[]
+  rootAccessSubscriptions RootAccessSubscription[]
+  wishlistItems           WishlistItem[]
+  recentlyViewedItems     RecentlyViewedItem[]
+  achievements            UserAchievement[]
+  communityPosts          CommunityPost[]          @relation("CommunityPostAuthor")
+  communityComments       CommunityComment[]       @relation("CommunityCommentAuthor")
+  communityPostLikes      CommunityPostLike[]
+  communitySavedPosts     CommunitySavedPost[]
+  communityReportsMade    CommunityReport[]        @relation("CommunityReportReporter")
+  communityReportsReviewed CommunityReport[]       @relation("CommunityReportReviewer")
+  createdAt               DateTime                 @default(now())
+  updatedAt               DateTime                 @updatedAt
 
   @@index([role])
   @@map("users")
@@ -175,6 +193,68 @@ model Setting {
   @@map("settings")
 }
 
+model RootAccessSubscription {
+  id              Int       @id @default(autoincrement())
+  userId          Int?
+  user            User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  email           String
+  status          String    @default("PENDING")
+  planCode        String    @default("root_access")
+  priceCents      Int
+  acceptedTermsAt DateTime
+  source          String
+  orderCode       String?
+  notes           String?
+  cancelledAt     DateTime?
+  expiresAt       DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([userId, createdAt])
+  @@index([status, createdAt])
+  @@index([orderCode])
+  @@map("root_access_subscriptions")
+}
+
+model WishlistItem {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  productId Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+  @@index([userId, createdAt])
+  @@map("wishlist_items")
+}
+
+model RecentlyViewedItem {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  productId Int
+  viewedAt  DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@index([userId, viewedAt])
+  @@map("recently_viewed_items")
+}
+
+model UserAchievement {
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  achievementCode String
+  unlockedAt      DateTime @default(now())
+  metadata        String?
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, achievementCode])
+  @@index([userId, unlockedAt])
+  @@map("user_achievements")
+}
+
 model ActivityLog {
   id          Int      @id @default(autoincrement())
   action      String
@@ -189,4 +269,162 @@ model ActivityLog {
   @@index([createdAt])
   @@index([entityType, entityId])
   @@map("activity_logs")
+}
+
+model Article {
+  id                 Int                  @id @default(autoincrement())
+  slug               String               @unique
+  title              String
+  subtitle           String?
+  excerpt            String
+  category           String
+  authorName         String
+  coverImageUrl      String?
+  content            String               @default("[]")
+  status             String               @default("DRAFT")
+  featured           Boolean              @default(false)
+  publishedAt        DateTime?
+  readingTimeMinutes Int                  @default(1)
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  relatedProducts    ArticleRelatedProduct[]
+
+  @@index([status, publishedAt])
+  @@index([category, publishedAt])
+  @@index([featured, status])
+  @@map("articles")
+}
+
+model ArticleRelatedProduct {
+  id        Int     @id @default(autoincrement())
+  articleId Int
+  productId Int
+  sortOrder Int     @default(0)
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([articleId, productId])
+  @@index([articleId, sortOrder])
+  @@index([productId])
+  @@map("article_related_products")
+}
+
+model CommunityPost {
+  id          Int                    @id @default(autoincrement())
+  authorId    Int
+  title       String
+  slug        String                 @unique
+  description String
+  category    String
+  status      String                 @default("PUBLISHED")
+  detailsJson String?
+  author      User                   @relation("CommunityPostAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  images      CommunityPostImage[]
+  products    CommunityPostProduct[]
+  comments    CommunityComment[]
+  likes       CommunityPostLike[]
+  saves       CommunitySavedPost[]
+  reports     CommunityReport[]
+  createdAt   DateTime               @default(now())
+  updatedAt   DateTime               @updatedAt
+
+  @@index([authorId, createdAt])
+  @@index([category, createdAt])
+  @@index([status, createdAt])
+  @@map("community_posts")
+}
+
+model CommunityPostImage {
+  id        Int           @id @default(autoincrement())
+  postId    Int
+  url       String
+  sortOrder Int           @default(0)
+  post      CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([postId, sortOrder])
+  @@map("community_post_images")
+}
+
+model CommunityPostProduct {
+  id        Int           @id @default(autoincrement())
+  postId    Int
+  productId Int
+  sortOrder Int           @default(0)
+  post      CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  product   Product       @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, productId])
+  @@index([postId, sortOrder])
+  @@index([productId])
+  @@map("community_post_products")
+}
+
+model CommunityComment {
+  id        Int               @id @default(autoincrement())
+  postId    Int
+  authorId  Int
+  body      String
+  status    String            @default("VISIBLE")
+  post      CommunityPost     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author    User              @relation("CommunityCommentAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  reports   CommunityReport[]
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  @@index([postId, createdAt])
+  @@index([authorId, createdAt])
+  @@index([status, createdAt])
+  @@map("community_comments")
+}
+
+model CommunityPostLike {
+  id        Int           @id @default(autoincrement())
+  postId    Int
+  userId    Int
+  post      CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime      @default(now())
+
+  @@unique([postId, userId])
+  @@index([userId, createdAt])
+  @@map("community_post_likes")
+}
+
+model CommunitySavedPost {
+  id        Int           @id @default(autoincrement())
+  postId    Int
+  userId    Int
+  post      CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime      @default(now())
+
+  @@unique([postId, userId])
+  @@index([userId, createdAt])
+  @@map("community_saved_posts")
+}
+
+model CommunityReport {
+  id             Int               @id @default(autoincrement())
+  reporterId     Int
+  targetType     String
+  postId         Int?
+  commentId      Int?
+  reason         String
+  details        String?
+  status         String            @default("OPEN")
+  reviewedById   Int?
+  reviewedAt     DateTime?
+  resolutionNote String?
+  reporter       User              @relation("CommunityReportReporter", fields: [reporterId], references: [id], onDelete: Cascade)
+  reviewer       User?             @relation("CommunityReportReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+  post           CommunityPost?    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  comment        CommunityComment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  @@index([status, createdAt])
+  @@index([targetType, createdAt])
+  @@index([postId])
+  @@index([commentId])
+  @@map("community_reports")
 }

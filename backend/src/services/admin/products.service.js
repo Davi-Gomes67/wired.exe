@@ -1,4 +1,4 @@
-const fs = require('node:fs');
+﻿const fs = require('node:fs');
 const path = require('node:path');
 const prisma = require('../../config/prisma');
 const { HttpError } = require('../../utils/http-error');
@@ -21,7 +21,7 @@ const productInclude = {
 const listProducts = async (query) => {
   const page = Math.max(1, Number(query.page) || 1);
   const pageSize = Math.min(50, Math.max(1, Number(query.pageSize) || 20));
-  const q = typeof query.q === 'string' ? query.q.trim() : '';
+  const q = typeof query.q === 'string' ?query.q.trim() : '';
   const where = {};
   if (q) where.OR = [{ name: { contains: q } }, { slug: { contains: q } }, { brand: { contains: q } }];
   if (query.categoryId) where.categoryId = Number(query.categoryId);
@@ -36,20 +36,20 @@ const listProducts = async (query) => {
 
 const getProduct = async (id) => {
   const product = await prisma.product.findUnique({ where: { id }, include: productInclude });
-  if (!product) throw new HttpError(404, 'Produto nÃ£o encontrado.');
+  if (!product) throw new HttpError(404, 'Produto n?o encontrado.');
   return product;
 };
 
 const createProduct = async (data) => {
   const { specifications, ...productData } = data;
   const category = await prisma.category.findUnique({ where: { id: productData.categoryId }, select: { id: true } });
-  if (!category) throw new HttpError(400, 'Categoria invÃ¡lida.');
+  if (!category) throw new HttpError(400, 'Categoria inv?lida.');
   try {
     return await prisma.product.create({
-      data: { ...productData, specifications: specifications ? { create: specifications } : undefined },
+      data: { ...productData, specifications: specifications ?{ create: specifications } : undefined },
       include: productInclude,
     });
-  } catch (e) { if (e.code === 'P2002') throw new HttpError(409, 'Slug de produto jÃ¡ existe.'); throw e; }
+  } catch (e) { if (e.code === 'P2002') throw new HttpError(409, 'Slug de produto j? existe.'); throw e; }
 };
 
 const updateProduct = async (id, data) => {
@@ -71,7 +71,7 @@ const updateProduct = async (id, data) => {
       }
       return tx.product.update({
         where: { id },
-        data: { ...productData, specifications: specifications ? { create: specifications } : undefined },
+        data: { ...productData, specifications: specifications ?{ create: specifications } : undefined },
         include: productInclude,
       });
     });
@@ -115,7 +115,7 @@ const addImages = async (id, files) => {
 
 const removeImage = async (imageId) => {
   const image = await prisma.productImage.findUnique({ where: { id: imageId } });
-  if (!image) throw new HttpError(404, 'Imagem não encontrada.');
+  if (!image) throw new HttpError(404, 'Imagem n?o encontrada.');
   await prisma.productImage.delete({ where: { id: imageId } });
   safeUnlinkUpload(image.url);
   const first = await prisma.productImage.findFirst({ where: { productId: image.productId }, orderBy: { sortOrder: 'asc' } });
@@ -123,4 +123,5 @@ const removeImage = async (imageId) => {
   return { productId: image.productId };
 };
 module.exports = { listProducts, getProduct, createProduct, updateProduct, deleteProduct, updateStock, addImages, removeImage };
+
 

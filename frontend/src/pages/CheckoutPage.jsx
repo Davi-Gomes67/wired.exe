@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
-import { AlertCircle, ArrowLeft, CreditCard, Loader2, LockKeyhole, MapPin } from 'lucide-react';
+﻿import { useEffect, useMemo, useState } from 'react';
+import { AlertCircle, ArrowLeft, CreditCard, Loader2, LockKeyhole, MapPin, ShieldCheck } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import EmptyState from '../components/EmptyState';
 import Price from '../components/Price';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import { addressService, cartService, getErrorMessage, ordersService } from '../services/api';
+import { addressService, cartService, getErrorMessage, ordersService, rootAccessService } from '../services/api';
 import { formatPrice } from '../utils/format';
 
 const PAYMENT_OPTIONS = [
@@ -17,7 +17,7 @@ const PAYMENT_OPTIONS = [
 function Field({ label, error, children, className = '' }) {
   return (
     <label className={`block ${className}`}>
-      <span className="mb-2 block text-sm font-medium text-slate-300">{label}</span>
+      <span className="mb-2 block text-sm font-medium text-sub">{label}</span>
       {children}
       {error && <span className="mt-1.5 block text-xs text-red-300">{error}</span>}
     </label>
@@ -37,6 +37,10 @@ function CheckoutPage() {
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState('');
+  const [rootOffer, setRootOffer] = useState(null);
+  const [rootOptIn, setRootOptIn] = useState(false);
+  const [rootAccept, setRootAccept] = useState(false);
+  const [rootWarning, setRootWarning] = useState('');
 
   useEffect(() => {
     let active = true;
@@ -54,6 +58,7 @@ function CheckoutPage() {
         }));
       }
     }).catch(() => {});
+    rootAccessService.getPublic().then((res) => { if (active) setRootOffer(res.data); }).catch(() => {});
     return () => { active = false; };
   }, []);
 
@@ -81,6 +86,7 @@ function CheckoutPage() {
     if (form.city.trim().length < 2) next.city = 'Informe a cidade.';
     if (!/^[A-Za-z]{2}$/.test(form.state.trim())) next.state = 'UF inválida.';
     if (!PAYMENT_OPTIONS.some((opt) => opt.value === form.paymentMethod)) next.paymentMethod = 'Selecione um método.';
+    if (rootOptIn && !rootAccept) next.rootAccess = 'Aceite os termos para solicitar o ROOT ACCESS.';
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -90,6 +96,7 @@ function CheckoutPage() {
     if (submitting || !validate()) return;
     setSubmitting(true);
     setServerError('');
+    setRootWarning('');
     try {
       const cartItems = items.map((item) => ({ productId: item.id, quantity: item.quantity }));
       const validation = await cartService.validate(cartItems);
@@ -110,8 +117,16 @@ function CheckoutPage() {
         items: cartItems,
       };
       const response = await ordersService.create(payload);
+      let warning = '';
+      if (rootOptIn && rootAccept && rootOffer?.enabled && rootOffer?.offerCheckout) {
+        try {
+          await rootAccessService.request({ acceptTerms: true, source: 'CHECKOUT', orderCode: response.data.orderCode });
+        } catch (err) {
+          warning = `Pedido criado, mas a solicitação ROOT ACCESS não pôde ser registrada: ${getErrorMessage(err)}`;
+        }
+      }
       clearCart();
-      navigate(`/pedido/${response.data.orderCode}`, { replace: true });
+      navigate(`/pedido/${response.data.orderCode}`, { replace: true, state: { rootAccessWarning: warning } });
     } catch (requestError) {
       setServerError(getErrorMessage(requestError));
       setSubmitting(false);
@@ -122,9 +137,11 @@ function CheckoutPage() {
     return <div className="container-page py-12"><EmptyState icon={LockKeyhole} title="Nada para finalizar" description="Adicione produtos ao carrinho antes de abrir o checkout." actionTo="/catalogo" actionLabel="Explorar catálogo" /></div>;
   }
 
+  const showRoot = rootOffer?.enabled && rootOffer?.offerCheckout;
+
   return (
     <div className="container-page py-10 sm:py-14">
-      <Link to="/carrinho" className="mb-6 inline-flex items-center gap-2 text-sm text-muted hover:text-[#D7EBDD]"><ArrowLeft size={16} /> Voltar ao carrinho</Link>
+      <Link to="/carrinho" className="mb-6 inline-flex items-center gap-2 text-sm text-muted hover:text-base"><ArrowLeft size={16} /> Voltar ao carrinho</Link>
       <p className="eyebrow">// checkout</p>
       <h1 className="section-title mt-3">Finalizar pedido</h1>
       <p className="section-desc">Pedido vinculado à sua conta. Simulação: nenhum pagamento é processado.</p>
@@ -132,9 +149,9 @@ function CheckoutPage() {
       <div className="mt-8 grid gap-6 xl:grid-cols-[1fr_360px]">
         <form onSubmit={handleSubmit} className="space-y-6">
           <section className="surface p-5 sm:p-6">
-            <h2 className="text-lg font-semibold text-[#D7EBDD]">Cliente</h2>
-            <div className="mt-4 rounded-xl border border-line bg-carbon/40 p-4 text-sm text-slate-300">
-              <p className="font-medium text-[#D7EBDD]">{user?.name}</p>
+            <h2 className="text-lg font-semibold text-base">Cliente</h2>
+            <div className="mt-4 rounded-xl border border-line bg-carbon/40 p-4 text-sm text-sub">
+              <p className="font-medium text-base">{user?.name}</p>
               <p>{user?.email}</p>
             </div>
             <div className="mt-4">
@@ -143,10 +160,10 @@ function CheckoutPage() {
           </section>
 
           <section className="surface p-5 sm:p-6">
-            <div className="flex items-center gap-2"><MapPin size={18} className="text-electric-light" /><h2 className="text-lg font-semibold text-[#D7EBDD]">Endereço de entrega</h2></div>
+            <div className="flex items-center gap-2"><MapPin size={18} className="text-electric-light" /><h2 className="text-lg font-semibold text-base">Endereço de entrega</h2></div>
             {addresses.length > 0 && (
               <div className="mt-4">
-                <label className="block text-sm text-slate-300 mb-2">Usar endereço salvo</label>
+                <label className="block text-sm text-sub mb-2">Usar endereço salvo</label>
                 <select className="input-field" value={selectedAddressId} onChange={(e) => applyAddress(e.target.value)}>
                   <option value="">Selecionar...</option>
                   {addresses.map((a) => <option key={a.id} value={a.id}>{a.label || a.recipientName} — {a.city}/{a.state}</option>)}
@@ -164,34 +181,57 @@ function CheckoutPage() {
           </section>
 
           <section className="surface p-5 sm:p-6">
-            <div className="flex items-center gap-2"><CreditCard size={18} className="text-electric-light" /><h2 className="text-lg font-semibold text-[#D7EBDD]">Pagamento (simulação)</h2></div>
+            <div className="flex items-center gap-2"><CreditCard size={18} className="text-electric-light" /><h2 className="text-lg font-semibold text-base">Pagamento (simulação)</h2></div>
             <p className="mt-1 text-xs text-muted">Nenhum pagamento real é processado.</p>
             <div className="mt-5 grid gap-3">
               {PAYMENT_OPTIONS.map((opt) => (
-                <label key={opt.value} className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition ${form.paymentMethod === opt.value ? 'border-electric/60 bg-electric/10' : 'border-line bg-carbon/40 hover:border-electric/30'}`}>
+                <label key={opt.value} className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition ${form.paymentMethod === opt.value ?'border-electric/60 bg-electric/10' : 'border-line bg-carbon/40 hover:border-electric/30'}`}>
                   <input type="radio" name="paymentMethod" value={opt.value} checked={form.paymentMethod === opt.value} onChange={set('paymentMethod')} className="mt-1 accent-[#8b5cf6]" />
-                  <span><span className="block text-sm font-medium text-[#D7EBDD]">{opt.label}</span><span className="block text-xs text-muted">{opt.desc}</span></span>
+                  <span><span className="block text-sm font-medium text-base">{opt.label}</span><span className="block text-xs text-muted">{opt.desc}</span></span>
                 </label>
               ))}
             </div>
           </section>
 
+          {showRoot && (
+            <section className="surface border-electric/25 p-5 sm:p-6">
+              <p className="eyebrow">// ROOT ACCESS opcional</p>
+              <h2 className="mt-2 text-lg font-semibold text-base">Adicionar solicitação ROOT ACCESS</h2>
+              <p className="mt-2 text-sm text-muted">Opcional. Não altera o total deste pedido e não realiza cobrança. Se marcado, registraremos uma solicitação PENDENTE vinculada ao seu pedido após a finalização.</p>
+              <div className="mt-4 rounded-xl border border-line bg-carbon/40 p-4 text-sm text-sub">
+                <p className="flex items-center gap-2 font-medium text-base"><ShieldCheck size={15} className="text-electric-light" /> ROOT ACCESS — {formatPrice(rootOffer.priceCents || 4990)}/mês</p>
+                <p className="mt-2 text-xs text-muted">Frete grátis elegível, Mystery Box mensal, itens exclusivos e acesso antecipado enquanto ativo.</p>
+              </div>
+              <label className="mt-4 flex cursor-pointer items-start gap-3 text-sm text-sub">
+                <input type="checkbox" checked={rootOptIn} onChange={(e) => { setRootOptIn(e.target.checked); if (!e.target.checked) setRootAccept(false); }} className="mt-1 accent-[#39FF70]" />
+                <span>Quero solicitar o ROOT ACCESS junto com este pedido (sem cobrança agora).</span>
+              </label>
+              {rootOptIn && (
+                <label className="mt-3 flex cursor-pointer items-start gap-3 rounded-xl border border-electric/20 bg-electric/5 p-4 text-sm text-sub">
+                  <input type="checkbox" checked={rootAccept} onChange={(e) => setRootAccept(e.target.checked)} className="mt-1 accent-[#39FF70]" />
+                  <span>Entendo que a assinatura ROOT ACCESS é opcional, custa {formatPrice(rootOffer.priceCents || 4990)}/mês quando ativada, e que esta solicitação será registrada como PENDENTE sem cobrança automática até configuração da integração.</span>
+                </label>
+              )}
+              {errors.rootAccess && <p className="mt-2 text-xs text-red-300">{errors.rootAccess}</p>}
+            </section>
+          )}
+
           {serverError && <div className="flex items-start gap-2.5 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-200"><AlertCircle size={17} className="mt-0.5 shrink-0" /><div><p>{serverError}</p><Link to="/carrinho" className="mt-2 inline-block text-electric-light underline">Revisar carrinho</Link></div></div>}
-          <button type="submit" disabled={submitting} className="btn-primary w-full sm:w-auto">{submitting ? <><Loader2 size={17} className="animate-spin" /> Registrando...</> : 'Registrar pedido'}</button>
+          <button type="submit" disabled={submitting} className="btn-primary w-full sm:w-auto">{submitting ?<><Loader2 size={17} className="animate-spin" /> Registrando...</> : 'Registrar pedido'}</button>
         </form>
 
         <aside className="surface h-fit p-5 xl:sticky xl:top-28">
-          <h2 className="text-lg font-semibold text-[#D7EBDD]">Resumo</h2>
+          <h2 className="text-lg font-semibold text-base">Resumo</h2>
           <div className="mt-5 space-y-4 border-t border-line pt-5">
             {items.map((item) => (
               <div key={item.id} className="flex justify-between gap-4 text-sm">
-                <span className="min-w-0 text-muted"><span className="block truncate text-slate-200">{item.name}</span><span className="font-mono text-xs">{item.quantity}x {formatPrice(item.priceCents)}</span></span>
-                <Price cents={item.priceCents * item.quantity} className="shrink-0 text-slate-200" size="sm" />
+                <span className="min-w-0 text-muted"><span className="block truncate text-sub">{item.name}</span><span className="font-mono text-xs">{item.quantity}x {formatPrice(item.priceCents)}</span></span>
+                <Price cents={item.priceCents * item.quantity} className="shrink-0 text-sub" size="sm" />
               </div>
             ))}
           </div>
-          <div className="mt-5 border-t border-line pt-5 flex justify-between text-sm"><span className="text-muted">Total</span><Price cents={subtotal} className="text-[#D7EBDD]" /></div>
-          <p className="mt-4 rounded-lg bg-electric/10 p-3 text-[11px] text-slate-300">Preços confirmados no backend. Sem cobrança real.</p>
+          <div className="mt-5 border-t border-line pt-5 flex justify-between text-sm"><span className="text-muted">Total</span><Price cents={subtotal} className="text-base" /></div>
+          <p className="mt-4 rounded-lg bg-electric/10 p-3 text-[11px] text-sub">Preços confirmados no backend. Sem cobrança real. ROOT ACCESS, se selecionado, é solicitado separadamente e não entra no total do pedido.</p>
         </aside>
       </div>
     </div>
@@ -199,3 +239,4 @@ function CheckoutPage() {
 }
 
 export default CheckoutPage;
+

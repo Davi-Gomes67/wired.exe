@@ -1,6 +1,7 @@
 const prisma = require('../config/prisma');
 const { HttpError } = require('../utils/http-error');
 const { generateOrderCode } = require('../utils/order-code');
+const { checkFirstOrder } = require('./achievements.service');
 
 const buildSnapshot = (items, productById) => {
   for (const item of items) {
@@ -40,7 +41,7 @@ const createOrder = async (payload, user) => {
   for (let attempt = 0; attempt < 5; attempt += 1) {
     const orderCode = generateOrderCode();
     try {
-      return await prisma.$transaction(async (tx) => {
+      const order = await prisma.$transaction(async (tx) => {
         const ids = payload.items.map((item) => item.productId);
         const products = await tx.product.findMany({ where: { id: { in: ids } } });
         const productById = new Map(products.map((product) => [product.id, product]));
@@ -66,7 +67,7 @@ const createOrder = async (payload, user) => {
 
         const subtotalCents = snapshots.reduce((total, item) => total + item.unitPriceCents * item.quantity, 0);
 
-        return tx.order.create({
+        const created = await tx.order.create({
           data: {
             orderCode,
             userId: user.id,
@@ -88,7 +89,10 @@ const createOrder = async (payload, user) => {
           },
           include: { items: true },
         });
+        return created;
       });
+      await checkFirstOrder(user.id).catch(() => {});
+      return order;
     } catch (error) {
       if (error && error.code === 'P2002' && attempt < 4) continue;
       throw error;

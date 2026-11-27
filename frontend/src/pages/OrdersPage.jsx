@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { AlertCircle, ClipboardList, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import EmptyState from '../components/EmptyState';
@@ -7,9 +7,9 @@ import { formatDate } from '../utils/format';
 import { getErrorMessage, ordersService } from '../services/api';
 
 const PAYMENT_LABELS = {
-  PIX_SIMULADO: 'Pix (simulação)',
-  BOLETO_SIMULADO: 'Boleto (simulação)',
-  CARTAO_ENTREGA_SIMULADO: 'Cartão na entrega (simulação)',
+  PIX_SIMULADO: 'Pix (simula??o)',
+  BOLETO_SIMULADO: 'Boleto (simula??o)',
+  CARTAO_ENTREGA_SIMULADO: 'Cart?o na entrega (simula??o)',
 };
 
 function OrdersPage() {
@@ -38,7 +38,7 @@ function OrdersPage() {
   if (error) {
     return (
       <div className="container-page py-12">
-        <EmptyState icon={AlertCircle} title="Não foi possível carregar os pedidos" description={error} actionTo="/catalogo" actionLabel="Ir ao catálogo" />
+        <EmptyState icon={AlertCircle} title="N?o foi poss?vel carregar os pedidos" description={error} actionTo="/catalogo" actionLabel="Ir ao cat?logo" />
       </div>
     );
   }
@@ -46,7 +46,7 @@ function OrdersPage() {
   if (orders.length === 0) {
     return (
       <div className="container-page py-12">
-        <EmptyState icon={ClipboardList} title="Você ainda não tem pedidos" description="Quando finalizar uma compra autenticada, ela aparecerá aqui." actionTo="/catalogo" actionLabel="Explorar catálogo" />
+        <EmptyState icon={ClipboardList} title="Voc? ainda n?o tem pedidos" description="Quando finalizar uma compra autenticada, ela aparecer? aqui." actionTo="/catalogo" actionLabel="Explorar cat?logo" />
       </div>
     );
   }
@@ -55,7 +55,7 @@ function OrdersPage() {
     <div className="container-page py-10 sm:py-14">
       <p className="eyebrow">// pedidos</p>
       <h1 className="section-title mt-3">Meus pedidos</h1>
-      <p className="section-desc">Histórico vinculado à sua conta.</p>
+      <p className="section-desc">Hist?rico vinculado ? sua conta.</p>
 
       <div className="mt-8 space-y-4">
         {orders.map((order) => (
@@ -66,11 +66,11 @@ function OrdersPage() {
                   <span className="font-mono text-sm text-electric-light">{order.orderCode}</span>
                   <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-0.5 text-[10px] font-semibold text-amber-200">{order.status}</span>
                 </div>
-                <p className="mt-2 text-sm text-slate-300">{formatDate(order.createdAt)}</p>
-                <p className="mt-1 text-xs text-muted">{PAYMENT_LABELS[order.paymentMethod] || order.paymentMethod} • {order.items.length} item(ns)</p>
+                <p className="mt-2 text-sm text-sub">{formatDate(order.createdAt)}</p>
+                <p className="mt-1 text-xs text-muted">{PAYMENT_LABELS[order.paymentMethod] || order.paymentMethod} â€¢ {order.items.length} item(ns)</p>
               </div>
               <div className="flex items-center justify-between gap-4 sm:flex-col sm:items-end">
-                <Price cents={order.totalCents} className="text-[#D7EBDD]" />
+                <Price cents={order.totalCents} className="text-base" />
                 <Link to={`/pedido/${order.orderCode}`} className="btn-subtle h-9 px-3 text-xs">Detalhes <ExternalLink size={14} /></Link>
               </div>
             </div>
@@ -82,3 +82,4 @@ function OrdersPage() {
 }
 
 export default OrdersPage;
+

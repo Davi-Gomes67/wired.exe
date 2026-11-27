@@ -74,7 +74,7 @@ export default function CatalogFilters({
           <button
             type="button"
             onClick={() => onOfferChange?.(!offer)}
-            className={`chip col-span-2 sm:col-span-1 ${offer ? 'chip-active' : ''}`}
+            className={`chip col-span-2 sm:col-span-1 ${offer ?'chip-active' : ''}`}
             aria-pressed={offer}
           >
             Ofertas

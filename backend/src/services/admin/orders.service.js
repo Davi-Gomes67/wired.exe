@@ -17,7 +17,7 @@ const listOrders = async (query) => {
 
 const getOrder = async (id) => {
   const order = await prisma.order.findUnique({ where: { id }, include: { items: true, user: { select: { id: true, name: true, email: true } } } });
-  if (!order) throw new HttpError(404, 'Pedido nÃ£o encontrado.');
+  if (!order) throw new HttpError(404, 'Pedido não encontrado.');
   return order;
 };
 
@@ -27,4 +27,5 @@ const updateOrderStatus = async (id, data) => {
 };
 
 module.exports = { listOrders, getOrder, updateOrderStatus };
+
 

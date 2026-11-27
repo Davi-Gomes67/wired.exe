@@ -1,18 +1,43 @@
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
+const fs = require('node:fs');
+const path = require('node:path');
 const prisma = require('../config/prisma');
 const { HttpError } = require('../utils/http-error');
 const { signAuthToken } = require('../utils/jwt');
 const { normalizeEmail, createResetToken, hashToken } = require('../utils/auth');
+const { unlock } = require('./achievements.service');
 
-const SAFE_USER_SELECT = { id: true, name: true, email: true, phone: true, role: true, active: true, createdAt: true, updatedAt: true };
+const SAFE_USER_SELECT = {
+  id: true, name: true, displayName: true, username: true, email: true, phone: true,
+  avatarUrl: true, publicMemberId: true, role: true, active: true, createdAt: true, updatedAt: true,
+};
 const SALT_ROUNDS = 10;
 const RESET_TOKEN_TTL_MS = 1000 * 60 * 30;
+
+const createPublicMemberId = () => `WRD-${crypto.randomBytes(4).toString('hex').toUpperCase()}`;
+
+const ensurePublicMemberId = async (tx, userId) => {
+  for (let i = 0; i < 5; i += 1) {
+    const publicMemberId = createPublicMemberId();
+    try {
+      return await tx.user.update({ where: { id: userId }, data: { publicMemberId }, select: SAFE_USER_SELECT });
+    } catch (error) {
+      if (error?.code !== 'P2002') throw error;
+    }
+  }
+  throw new HttpError(500, 'Não foi possível gerar identificação pública.');
+};
 
 const sanitizeUser = (user) => ({
   id: user.id,
   name: user.name,
+  displayName: user.displayName || user.name,
+  username: user.username,
   email: user.email,
   phone: user.phone,
+  avatarUrl: user.avatarUrl,
+  publicMemberId: user.publicMemberId,
   role: user.role,
   active: user.active,
   createdAt: user.createdAt,
@@ -27,10 +52,14 @@ const register = async ({ name, email, password, phone }) => {
   if (existing) throw new HttpError(409, 'E-mail já cadastrado.');
 
   const passwordHash = await bcrypt.hash(password, SALT_ROUNDS);
-  const user = await prisma.user.create({
-    data: { name, email: normalizedEmail, phone: phone || null, passwordHash },
-    select: SAFE_USER_SELECT,
+  const user = await prisma.$transaction(async (tx) => {
+    const created = await tx.user.create({
+      data: { name, displayName: name, email: normalizedEmail, phone: phone || null, passwordHash },
+      select: { id: true },
+    });
+    return ensurePublicMemberId(tx, created.id);
   });
+  await unlock(user.id, 'FIRST_CONNECTION').catch(() => {});
   return issueAuth(user);
 };
 
@@ -46,18 +75,24 @@ const login = async ({ email, password }) => {
 };
 
 const getMe = async (userId) => {
-  const user = await prisma.user.findUnique({ where: { id: userId }, select: SAFE_USER_SELECT });
+  let user = await prisma.user.findUnique({ where: { id: userId }, select: SAFE_USER_SELECT });
   if (!user) throw new HttpError(404, 'Usuário não encontrado.');
+  if (!user.publicMemberId) user = await ensurePublicMemberId(prisma, userId);
   return sanitizeUser(user);
 };
 
 const updateProfile = async (userId, data) => {
-  const user = await prisma.user.update({
-    where: { id: userId },
-    data,
-    select: SAFE_USER_SELECT,
-  });
-  return sanitizeUser(user);
+  try {
+    const user = await prisma.user.update({
+      where: { id: userId },
+      data,
+      select: SAFE_USER_SELECT,
+    });
+    return sanitizeUser(user);
+  } catch (error) {
+    if (error?.code === 'P2002') throw new HttpError(409, 'Nome de usuário já em uso.');
+    throw error;
+  }
 };
 
 const changePassword = async (userId, { currentPassword, newPassword }) => {
@@ -68,6 +103,19 @@ const changePassword = async (userId, { currentPassword, newPassword }) => {
 
   const passwordHash = await bcrypt.hash(newPassword, SALT_ROUNDS);
   await prisma.user.update({ where: { id: userId }, data: { passwordHash } });
+};
+
+const updateAvatar = async (userId, file) => {
+  if (!file) throw new HttpError(400, 'Envie uma imagem de avatar.');
+  const current = await prisma.user.findUnique({ where: { id: userId }, select: { avatarUrl: true } });
+  if (!current) throw new HttpError(404, 'Usuário não encontrado.');
+  const avatarUrl = `/uploads/avatars/${file.filename}`;
+  const user = await prisma.user.update({ where: { id: userId }, data: { avatarUrl }, select: SAFE_USER_SELECT });
+  if (current.avatarUrl && current.avatarUrl.startsWith('/uploads/avatars/')) {
+    const oldPath = path.resolve(__dirname, '../../../', current.avatarUrl.replace(/^\//, ''));
+    try { fs.unlinkSync(oldPath); } catch {}
+  }
+  return sanitizeUser(user);
 };
 
 const requestPasswordReset = async ({ email }) => {
@@ -113,4 +161,4 @@ const resetPassword = async ({ token, password }) => {
   ]);
 };
 
-module.exports = { register, login, getMe, updateProfile, changePassword, requestPasswordReset, resetPassword, sanitizeUser };
+module.exports = { register, login, getMe, updateProfile, updateAvatar, changePassword, requestPasswordReset, resetPassword, sanitizeUser, SAFE_USER_SELECT };

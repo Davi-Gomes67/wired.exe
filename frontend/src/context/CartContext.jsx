@@ -23,7 +23,7 @@ function reducer(state, action) {
       if (!existing) return [...state, action.item];
       return state.map((item) =>
         item.id === action.item.id
-          ? {
+          ?{
               ...item,
               quantity: Math.min(item.quantity + action.item.quantity, Math.max(1, item.stock)),
             }
@@ -33,7 +33,7 @@ function reducer(state, action) {
     case 'SET_QUANTITY':
       return state.map((item) =>
         item.id === action.id
-          ? {
+          ?{
               ...item,
               quantity: Math.min(Math.max(1, action.quantity), Math.max(1, item.stock)),
             }
